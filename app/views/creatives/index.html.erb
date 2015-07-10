@@ -1,0 +1,37 @@
+<div class="tablebox table-orderHistory">
+  <div class="row">
+    <div class="column">ID</div>
+    <div class="column"> Name</div>
+        <div class="column">Email</div>
+    <div class="column">Phone Number</div>
+    <div class="column">Space</div>
+    <div class="column">Posted on</div>
+    <div class="column">Budget</div>
+
+    <div class="column last">Actions</div>
+  </div>
+  
+  <% @creatives.each_with_index do |creative,index| %>
+    <div class="row">
+      <div class="column"><%= index+1 %></div>
+      <div class="column"><%=  creative.name %></div>
+       <div class="column"><%= creative.email %></div>
+      <div class="column"><%= creative.phone %></div>
+      <div class="column"><%= creative.space %></div>
+      <div class="column"><%= creative.created_at.strftime("%Y-%m-%d") %></div>
+      <div class="column"><%= number_to_currency(creative.budget) %></div>
+     
+      <div class="column last">
+
+        <%= link_to image_tag("/assets/user-images/icon-close.png", :class => "icon-search"), creative_path(creative), :method => :delete, :confirm => "Are you sure." %>
+        
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<style>
+  .column{
+    width: 12%;
+  }
+</style>

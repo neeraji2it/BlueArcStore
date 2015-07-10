@@ -1,0 +1,30 @@
+<div class="content">
+  <div id="leftColumn">
+    <div>
+      <%= form_tag search_causes_path, :method => 'get' do %>
+        <%= text_field_tag :query, "", :placeholder => "Keywords", :style => 'width: 160px; position: relative;top: -1px;' %>
+        <%= submit_tag "Go", :style => 'padding: 4px 5px;' %>
+      <% end %>
+    </div>
+    <br />
+    <ul class="list-menuLeft">
+      <li class="<%= params[:cause_type] == "Animal Cause" ? "active" : "" %>" style="background-color: #92D0FF;"><%= link_to "Animal Cause", all_causes_path(:cause_type => "Animal Cause"), :style => 'color: white;' %></li>
+      <li class="<%= params[:cause_type] == "Human Cause" ? "active" : "" %>" style="background-color: #FF8080;"><%= link_to "Human Cause", all_causes_path(:cause_type => "Human Cause"), :style => 'color: white;' %></li>
+      <li class="<%= params[:cause_type] == "Environment Cause" ? "active" : "" %>" style="background-color: #8AD557;"><%= link_to "Environment Cause", all_causes_path(:cause_type => "Environment Cause"), :style => 'color: white;' %></li>
+    </ul>
+  </div>
+  <div id="rightColumn">
+    <div class="box-trending">
+      <h4>Trending</h4>
+      <ul class="list-trending">
+        <% Cause.where("title IS NOT NULL").order("count Desc").each do |cause| %>
+          <li><%= link_to cause.title, cause_path(cause) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <ul class="list-order" style="position: relative; left: -37px; width: 60%; top: -10px;">
+      <%= render :partial => '/causes/index' %>
+    </ul>
+  </div>
+  <div class="clearFix"></div>
+</div>

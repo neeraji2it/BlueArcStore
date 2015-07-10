@@ -1,0 +1,74 @@
+<div class="topbar">
+  <ul class="menu-top">
+    <%# if !current_user %>
+      <!--<li><%#= link_to "Sell", sell_path %></li>-->
+    <%# end %>
+      <li><%= link_to "Creative Design work", new_creative_path %></li>
+    <li><%= link_to "About", about_us_path %></li>
+   <!--  <li><%#= link_to "Handicraft", '/index' %></li> -->
+    <li><%= link_to "Categories", category_path %> </li>
+    <li><%= link_to "Contact", new_contact_path %> </li>
+    <li><%= link_to "Cart", carts_path %> </li>
+    <li><%= current_user ? (link_to "Logout", destroy_user_session_path, :method => 'delete') : (link_to "Login", new_user_session_path) %></li>
+    <% if current_user && current_user.role != 'admin' %>
+      <li><%= link_to "Dashboard", profile_profile_path(current_user) %></li>
+    <% end %>
+    <% if !current_user %>
+    <li><%= link_to "Sign up", new_user_path(:role => 'buyer'), :class => 'lin-signup' %></li>
+
+   <!-- <li><%#= link_to "Seller Sign up", new_user_path(:role => "seller"), :class => "lin-signup" %> </li> -->
+    <%end %>
+  </ul>
+</div>
+<div class="commonrow">
+  <%= link_to image_tag("/assets/touchsecure-logo.jpg", :id => "logo"), '/' %>
+  <%= form_tag search_products_path, :method => 'get' do %>
+    <div class="bposi">
+      <%= text_field_tag :query, "", :title => "Search Items ", :placeholder => "Search Items ", :class => "icon-search" %>
+      <%= submit_tag "", :class => 'btn-search' %>
+    </div>
+  <% end %>
+  <div class="icon-shopping" style="cursor: pointer;">
+    <%= current_cart.line_items.present? ? ("<span style='position: relative;left: -20px;'>#{current_cart.line_items.count} Items in Your Cart</span>".html_safe) : ("<span style='position: relative;left: -15px;'>Your Cart Is Empty</span>".html_safe) %>
+  </div>
+</div>
+<div class="nav-container">
+  <div id="navigation">
+    <ul class="list-media">
+      <%= render 'layouts/social' %>
+    </ul>
+    <nav>
+      <ul>
+
+        <li class="parent"><a title="Categories" href="/category">Categories</a>
+          <ul class="submenu">
+            <% Category.where("parent_id IS NULL").each do |category| %>
+              <li onmouseover="display_side(this)" onmouseout="hide_side(this)">
+                <%= link_to category.name, category_path(:categories => category.id) %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+<!--         <li class="parent">
+          <%#= link_to "Explore Handicraft", '/' %>
+        </li> -->
+        <% if !current_user %>
+          <!-- <li><%= link_to "Sell", sell_path %></li> -->
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</div>
+<script>
+  $('.icon-shopping').click(function() {
+    window.location.href = '<%= carts_path %>';
+  });
+
+  function display_side(th) {
+    $(th).addClass('sub-parent');
+  }
+
+  function hide_side(th) {
+    $(th).removeClass('sub-parent');
+  }
+</script>

@@ -1,0 +1,35 @@
+<h1 class="icon-productsManagement"><em class="icon-plus"><%= (user_signed_in? and current_user.role == 'seller') ? (link_to "New Product", new_product_path) : "" %></em><span>Review Product</span></h1>
+<div class="tablebox table-orderHistory">
+  <div class="row">
+    <div class="column">ID</div>
+    <div class="column">Product Name</div>
+    <div class="column">Posted on</div>
+    <div class="column">Price</div>
+    <div class="column">Qty Sold</div>
+    <div class="column">Qty Remaining</div>
+    <div class="column last">Actions</div>
+  </div>
+  <% @products.each_with_index do |product,index| %>
+    <div class="row">
+      <div class="column"><%= index+1 %></div>
+      <div class="column"><%= link_to product.title, edit_product_path(product) %></div>
+      <div class="column"><%= product.created_at.strftime("%Y-%m-%d") %></div>
+      <div class="column"><%= number_to_currency(product.price) %></div>
+      <div class="column"><%= product.qty_sold %></div>
+      <div class="column"><%= product.colors.present? ? (product.colors.first.product_qty) : "--" %></div>
+      <div class="column last" style="width: 250px;">
+        <%= link_to image_tag("/assets/admin-images/icon-search.png", :class => "icon-search"), product_path(product) %>&nbsp;&nbsp;
+        <%= link_to image_tag("/assets/user-images/icon-edit.png", :class => "icon-search"), edit_product_path(product) %>&nbsp;&nbsp;
+        <%= link_to image_tag("/assets/user-images/icon-close.png", :class => "icon-search"), product_path(product), :method => :delete, :confirm => "Are you sure." %>
+        <%= link_to "<input class='btn-activate' type='submit' title='Activate' value='Approve' />".html_safe, confirm_product_admin_path(product, :status =>'confirmed'), :method => 'put', :class => 'button', :style => 'text-decoration: none;' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<span class="pagination" style='float: right;'><%= will_paginate @products, :param_name => 'product_page', :next_label => "Next", :previous_label => 'Prev', :page_links => false %></span>
+<%= render :partial => '/profiles/pagination_script' %>
+<style>
+  .column{
+    width: 12%;
+  }
+</style>

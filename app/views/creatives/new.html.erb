@@ -1,0 +1,65 @@
+
+
+<div class="causesBox">
+  <h3>Creative Design work</h3>
+  <p>BlueArcStore is a e-commerce platform to "Discover Unique Hand crafted Products" including Handmade, Vintage, Ethnic, Organic,IT and Natural products. We help a person redesign his home/living with the latest in handicrafts.
+<br><br>
+  </p>
+
+<div class="causesBox">
+  
+  <p>
+   
+    Fill out the  form below and we will be in touch with you .
+  </p>
+  <%= form_for @creative do |f| %>
+    
+    <% if @creative.errors.any? %>
+    <div id="error_explanation">
+      <ul >
+        <% @creative.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="form-group">
+      Name: &nbsp;&nbsp;
+      <%= f.text_field :name %>
+    </div><br>
+
+    <div class="form-group">
+     Email: &nbsp;&nbsp; 
+     <%= f.email_field :email %>
+   </div><br>
+
+   <div class="form-group">
+     phone: &nbsp;&nbsp;
+     <%= f.text_field :phone %>
+   </div><br>
+
+   <div class="form-group">
+     Space: &nbsp;&nbsp;
+     <%= f.select :space, %w(Office Home) %>
+   </div>
+   <br>
+   <div class="form-group">
+    budget: &nbsp;&nbsp;
+    <%= f.text_field :budget %>
+  </div><br>
+<div class="form-action">
+  <%= f.submit "Submit Query"  %>
+  <% end %>
+</div>
+
+
+
+</div>
+
+<style>
+  .causesBox p{
+    font-size: 15px;
+    text-indent: 10px;
+  }
+</style>

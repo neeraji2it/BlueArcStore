@@ -1,0 +1,36 @@
+<h1>Edit <%= @user.role %></h1>
+<p class="required">*All fields are required</p>
+<div id="formDiv">
+  <%= form_for @user, :url => user_path(@user), :method => 'PUT' do |f| %>
+    <p>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </p>
+
+    <p>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </p>
+
+    <p>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </p>
+
+    <p>
+      <%= f.radio_button :gender, "Male" %>&nbsp;Male&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= f.radio_button :gender , "Female"%>&nbsp;Female&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= f.radio_button :gender ,"Rather not say"%>&nbsp;Rather not say
+    </p>
+
+
+    <p>
+      <%= f.label :email %>
+      <%= f.email_field :email, :readonly => true %>
+    </p>
+
+    <p>
+      <button type="submit">Update</button>
+    </p>
+  <% end %>
+</div>

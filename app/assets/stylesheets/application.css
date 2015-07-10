@@ -1,0 +1,116 @@
+/*
+ *= require jquery.notify_bar
+ */
+
+.ratings {
+    background: url(/assets/star.png);
+    background-position: 0px 0px;
+    height: 16px;
+    overflow: hidden;
+    text-indent: -1000px;
+    width: 80px;
+}
+.stars-5 { width: 80px; }
+.stars-4 { width: 63px; }
+.stars-3 { width: 49px; }
+.stars-2 { width: 32px; }
+.stars-1 { width: 17px; }
+.stars-0 { width: 0px; }
+
+#stars-rating{
+    background-image: url("/assets/star.png");
+    background-position: 0px -16px;
+    height: 16px;
+    width: 80px;
+    margin-top: 2px;
+}
+
+#overlay{
+    display: none;
+    background-color: #000000;
+    height:500px;
+    left:0;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index: 1000;
+    width: 100000px;
+    height: 941px;
+    opacity: 0.5;
+}
+
+#popup_box {
+    height:auto;
+    width:auto;
+    left:32%;
+    margin: -220px 0 0 -250px;
+    padding:15px;
+    position:fixed;
+    top:65%;
+    z-index:1001;
+    font-size: 12px;
+    display: none
+}
+
+#popup_box1 {
+    height:auto;
+    width:auto;
+    left:45%;
+    margin: -220px 0 0 -250px;
+    padding:15px;
+    position:fixed;
+    top:40%;
+    z-index:1031;
+    font-size: 12px;
+    display: none
+}
+
+#ajax-loader{
+    display: none;
+    float: left;
+    height: 32px;
+    left: 430px;
+    position: absolute;
+    top: 28px;
+    width: 32px;
+    z-index: 1000000;
+}
+
+form.rating_ballot input#rating_submit { display: none; }
+form.rating_ballot input.rating_button { display: none; }
+
+form.rating_ballot label.rating { cursor: pointer; display: table-cell; height: 17px; width: 17px;}
+form.rating_ballot label.rating span { display: none; }
+form.rating_ballot label.rating { background-image: url(/assets/star.gif);background-position: 17px 0px;}
+form.rating_ballot label.rating.bright { background-image: url(/assets/star.gif);background-position: 17px 32px;}
+form.rating_ballot label.rating.glow { background-image: url(/assets/star.gif);background-position: 17px 15px; }
+
+.current-rating-rated {
+    background-image: url(/assets/star.png);
+    position: absolute;
+    height: 10px;
+    text-indent: -9000px;
+}
+
+.social-share-button-facebook { display:inline-block;position: relative;left: -3px;  width: 30px; height: 30px; background:url(/assets/sprite.png) no-repeat 0px -119px; }
+.social-share-button-twitter { display:inline-block;position: relative;left: -3px; width: 30px; height: 30px; background:url(/assets/sprite.png) no-repeat 0px -151px; }
+.social-share-button-google_plus { display:inline-block; position: relative;left: -3px;  width: 30px; height: 30px; background:url(/assets/sprite.png) no-repeat 0px -215px; }
+.social-share-button-pinterest { display:inline-block;position: relative;left: -3px;  width: 30px; height: 30px; background:url(/assets/sprite.png) no-repeat 0px -247px; }
+
+
+#error_explanation {
+  color: #f00;
+   border: 1px solid #CCC;
+   margin-bottom: 20px;
+   padding: 10px;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  padding: 1px;
+  background-color: #f00;
+  display: table;
+}

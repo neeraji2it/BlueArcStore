@@ -1,0 +1,17 @@
+        <h1 class="icon-profile"><span>Contacts</span></h1>
+<div class="tablebox table-categoryManagement">
+  <div class="row">
+    <div class="column">Name</div>
+    <div class="column">Email</div>
+    <div class="column">Message</div>
+    <div class="column">Options</div>
+  </div>
+  <% @contact.each do |contact| %>
+    <div class="row">
+      <div class="column"><%= contact.name.capitalize %></div>
+      <div class="column"><%= contact.email %></div>
+      <div class="column"><%= contact.message%></div>
+      <div class="column"><%= contact.option%></div>
+    </div>
+  <% end %>
+</div>

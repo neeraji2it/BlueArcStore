@@ -1,0 +1,27 @@
+<h1 class="icon-userManagement"><span>User Management</span></h1>
+<div class="tablebox table-orderHistory">
+  <div class="row">
+    <div class="column">ID</div>
+    <div class="column">Name</div>
+    <div class="column">Email</div>
+    <div class="column">Phone</div>
+    <div class="column">City</div>
+    <div class="column">ZIP</div>
+    <div class="column">Country</div>
+    <div class="column">Options</div>
+  </div>
+  <% @users.each_with_index do |user, index| %>
+    <div class="row">
+      <div class="column"><%= index+1 %></div>
+      <div class="column"><%= user.username %></div>
+      <div class="column"><%= user.email %></div>
+      <div class="column"><%= user.phone.present? ? user.phone : "-" %></div>
+      <div class="column"><%= user.city.present? ? user.city : "-" %></div>
+      <div class="column"><%= user.zip.present? ? user.zip : "-" %></div>
+      <div class="column"><%= user.country.present? ? user.country : "-" %></div>
+      <div class="column last">
+        <%= user.confirmation_token.nil? ? (link_to "<input class='btn-deActivate' type='submit' title='De Activate' value='Suspend' />".html_safe, {:controller => 'users', :action => 'update', :id => user.id, :role => user.role, :active => 'Deactive'}, :method => :put, :style => 'text-decoration: none;') : (link_to "<input class='btn-activate' type='submit' title='Activate' value='Approve' />".html_safe, {:controller => 'users', :action => 'update', :id => user.id, :role => user.role, :active => 'Active'}, :method => :put, :style => 'text-decoration: none;')%>
+      </div>
+    </div>
+  <% end %>
+</div>

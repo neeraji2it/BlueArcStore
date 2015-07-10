@@ -1,0 +1,154 @@
+<table width="100%">
+  <tr class="row">
+    <td>Seller Name</td>
+    <td><%= f.text_field :sell_name %></td>
+  </tr>
+  <tr class="row">
+    <td><%= f.label :category_id, "Product Category:#{mark}".html_safe %></td>
+    <td><%= select_tag :category_id, options_for_select([["Select",""]]+Category.where("parent_id IS NULL").collect{|a| [a.name.capitalize, a.id]}, :selected => f.object.category_id), :onchange => 'select_file(this.value)' %></td>
+  </tr>
+  <tr class="row">
+    <td></td>
+    <td id="category"></td>
+  </tr>
+  <tr class="row">
+    <td><%= f.label :title, "Product Name:#{mark}".html_safe %></td>
+    <td><%= f.text_field :title %></td>
+  </tr>
+  <tr class="row">
+    <td valign="top">Add Attributes:<%= "#{mark}".html_safe %></td>
+    <td>
+      <%= f.fields_for :colors do |builder| %>
+        <div>
+          <%= builder.text_field :product_color, :placeholder => 'Color', :style => 'width: 134px;'  %>
+          <%= builder.text_field :size, :placeholder => 'Size', :style => 'width: 134px;' %>
+          <%= builder.text_field :buyer_type, :placeholder => 'Type: Male/Female', :style => 'width: 134px;' %>
+          <%= builder.link_to_remove image_tag("/assets/seller-images/icon-close.png"), 'data-nested-form-disable-first' => '' %>
+        </div>
+      <%end%>
+      <div id="add_color">
+        <%= f.link_to_add "<span style='color: red;'>Add Attributes</span>".html_safe, :colors %>
+      </div>
+    </td>
+  </tr>
+<!--   <tr class="row">
+    <td>Fair Trade</td>
+    <td><%= f.radio_button :fair_trade, "Yes" %>Yes
+      <%= f.radio_button :fair_trade , "No"%>No</td>
+  </tr>
+  <tr class="row">
+    <td></td>
+    <td>
+      <%= f.check_box :product_ability %>Hide Product</td>
+  </tr> -->
+  <tr class="row">
+    <td>Quantity</td>
+    <td><%= f.text_field :qty %></td>
+  </tr>
+  <tr class="row">
+    <td><%= f.label :price, "Price:#{mark}".html_safe %></td>
+    <td><%= f.text_field :price %></td>
+  </tr>
+  <%# if @product.new_record? || @product.images.blank? %>
+    <tr class="row">
+      <td valign="top">Images:<%= "#{mark}".html_safe %></td>
+      <td>
+        <%= f.fields_for :images do |builder| %>
+          <%= builder.file_field :image  %>
+          <%= builder.link_to_remove image_tag("/assets/seller-images/icon-close.png"), 'data-nested-form-disable-first' => '' %>
+        <%end%>
+        <div>
+          <%= f.link_to_add "<span style='color: red;'>Add More Images</span>".html_safe, :images %>
+        </div>
+        <br />
+      </td>
+    </tr>
+  <%# end %>
+<!--   <tr class="row">
+    <td><%= f.label :non_profit_cause, "Select Cause Category:#{mark}".html_safe %></td>
+    <td>
+      <%= select_tag :non_profit_cause, options_for_select([["Select Cause Category",""], ["Animal Cause", 'Animal Cause'], ["Human Cause", "Human Cause"],["Enivronmental Cause","Environmental Cause"],["Any","Any"]], :selected => f.object.non_profit_cause), :onchange=>"cause_type(this.value)" %>
+    </td>
+  </tr> -->
+<!--   <tr class="row">
+    <td><%= f.label :cause_id, "Support Cause:" %></td>
+    <td>
+      <div id="client-category">
+        <%= select_tag :cause_id, options_for_select(["Select",""], :selected => f.object.cause_id) %>
+      </div>
+    </td>
+  </tr> -->
+  <tr class="row">
+    <td><%= f.label :promotion_code_id, "Promotion Code:" %></td>
+    <td>
+      <div id="client-category">
+        <%= f.select :promotion_code_id, options_for_select([["Select",""]]+PromotionCode.all.map{|a| [a.promo_code, a.id]}, :selected => f.object.cause_id) %>
+      </div>
+    </td>
+  </tr>
+<!--   <tr class="row">
+    <td><%= f.label :non_profit_percentage, "Percentage to Non-Profit:#{mark}".html_safe %></td>
+    <td><%= f.text_field :non_profit_percentage %></td>
+  </tr> -->
+  <tr class="row">
+    <td><%= f.label :description, "Description:#{mark}".html_safe %></td>
+    <td><%= f.text_area :description, :cols => 33, :rows => 3 %></td>
+  </tr>
+  <tr>
+    <td valign="top">Shipping Details:<%= "#{mark}".html_safe %></td>
+    <td><%= f.text_field :shipping, :placeholder => "Estimate Shipping Time" %></td>
+  </tr>
+  <tr class="row">
+    <td></td>
+    <td>
+      <span style="position: relative;font-weight: bold;">Ships To</span>
+      <span style="position: relative;left: 111px;font-weight: bold;">Cost</span>
+      <span style="position: relative;left: 175px;font-weight: bold;"> With another item ?</span>
+      <%= f.fields_for :shipping_products do |builder| %>
+        <div>
+          <span id="cc"><%= builder.country_select :country, ["United States"] %></span>
+          <%= builder.select :location, %w($ र €), :style => 'width: 50px;' %>
+          <%= builder.text_field :cost, :placeholder => "Shipping Cost", :style => 'width: 75px;' %>
+          <%= builder.text_field :item_cost, :placeholder => "Each Item Cost", :style => 'width: 80px;' %>
+          <%= builder.link_to_remove image_tag("/assets/seller-images/icon-close.png"), 'data-nested-form-disable-first' => '' %>
+        </div>
+      <%end%>
+      <style>
+        #cc select{
+          width: 100px;
+        }
+      </style>
+      <div>
+        <%= f.link_to_add "<span style='color: red;'>Add Location</span>".html_safe, :shipping_products  %>
+      </div>
+      <br />
+    </td>
+  </tr>
+  <tr class="row">
+    <td></td>
+    <td><%= f.check_box :agree_terms %><%= "#{mark}".html_safe %>The products listed on the site and are not selling items not allowed to sell on HandiCraft Studios, etc.</td>
+  </tr>
+  <tr class="row">
+    <td></td>
+    <td>
+      <div><img alt="" title="" src="/assets/user-images/spacer.png" /></div>
+      <div><input type="submit" title="Submit" value="Submit for Review" /></div>
+    </td>
+  </tr>
+</table>
+<script>
+  function cause_type(val) {
+    $.ajax({
+      url: '/products/cause_types?cause_type=' + val,
+      success: function(data) {
+        $("#client-category").html(data);
+      }
+    });
+  }
+
+  function select_file(val) {
+    $.ajax({
+      url: '/products/categories?id=' + val
+    });
+  }
+</script>

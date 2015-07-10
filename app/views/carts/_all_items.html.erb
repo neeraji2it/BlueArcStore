@@ -1,0 +1,112 @@
+<%= link_to "<input class='fright' title='Continue Shopping' type='submit' value='Continue Shopping' />".html_safe, '/' %>
+<h6><%= current_cart.line_items.count %>  Items in your Cart</h6>
+<% if !@user_products.to_a.empty? %>
+<% for line_item in @user_products %>
+<div class="box-orderfrom">
+  <h4>
+    <%= link_to "Close", cart_path(line_item), :method => :delete, :confirm => "Are You Sure", :class => "icon-close" %>
+    Order from  <%= link_to line_item.product.user.username, seller_path(line_item.product.user) %>
+  </h4>
+  <div class="checkoutColumn">
+    <ul class="list-checkout">
+      <%= form_tag pay_line_item_orders_path(line_item.id), :method => 'GET', :id => "submit_cart_#{line_item.id}" do %>
+
+
+              <% end %>
+              <li>
+                <div class="row-checkout bold">
+                  <div>Order total</div>
+                  <div><%= number_to_currency(line_item.full_price) %> USD</div><br>
+                  <div>Grand total</div>
+                  <div><%= number_to_currency(@cart.total_price) %> USD</div>
+                </div>
+                <%= text_field_tag :authentication_code, nil, placeholder: 'Authentication token' %>
+                <br/>
+                <%= render :partial => 'payment'%>
+
+                <br/>
+                <div id="gateway">
+                  <%= form_tag "/payments/TestSsl.php" do %>
+                    <%= hidden_field_tag :amount, @cart.total_price %>
+                    <%= submit_tag "Checkout with ICICI" %>
+                  <% end %>
+                </div>
+
+              </li>
+            </ul>	
+            <% if line_item.product.non_profit_cause == 'Any' %>
+            <script>
+              $("#sub_<%= line_item.id%>").click(function() {
+                if ($("#cause_<%=line_item.id%>").val() == '') {
+                  alert("Select Non-Profit Cause")
+                  return false;
+                } else {
+                  $("#submit_cart_<%= line_item.id%>").submit();
+                }
+              });
+            </script>
+            <% end %>
+          </div>
+          <ul class="list-order">
+            <li>
+              <div class="orderThum">
+                <%= image_tag(line_item.product.images.first.image.url(:original), :width => '168', :height => '155', :id => "image_#{line_item.id}", :style => 'cursor: pointer;') %>
+              </div>
+              <script>
+                $(document).ready(function() {
+                  $("#image_<%= line_item.id %>").mouseover(function() {
+                    $("#image_<%= line_item.id %>").css({width: 170, height: 200});
+                  });
+                  $("#image_<%= line_item.id %>").mouseleave(function() {
+                    $("#image_<%= line_item.id %>").css({width: 168, height: 155});
+                  });
+                });
+              </script>
+              <ul class="list-orderDetail">
+                <li><%= link_to line_item.product.title, product_path(line_item.product) %></li>
+                <li>Quantity: 
+                  <em id='qua'>
+                    <%= link_to line_item.quantity, edit_lineitem_cart_path(line_item), :remote => true, :id => 'lll' %>
+                  </em>
+                  <span id='line_item_quantiy_<%= line_item.id %>'></span>
+                </li>
+                <li><%= number_to_currency(line_item.product.price) %> USD </li>
+                <!-- <li>Donation: <%#= number_to_currency(((line_item.full_price.to_f)*(line_item.product.non_profit_percentage))/100) %> USD </li> -->
+              </ul>
+            </li>
+<!--         <li>
+          <div style="position: relative; left: -12px; width: 618px;">
+            <div class="thum-productDetail" style="width: 78px;"><canvas id="canvas_<%= line_item.id %>" height="72" width="75"></canvas></div>
+            <p style="float: left; margin-top: 17px; width: 218px; margin-left: -2px;"><%#= line_item.product.non_profit_percentage %><%#= "%" %>  of the proceeds <br>will be donated.</p>
+            <div class="thum-productDetail" style="width: 170px;">
+              <% #if line_item.product.non_profit_cause == "Any" %>
+                <%#= image_tag("/assets/icon-dog-foot.png", :width => 50, :height => 50) %>
+                <%#= image_tag("/assets/icon-glob.png", :width => 50, :height => 50) %>
+                <%#= image_tag("/assets/icon-heart.png", :width => 50, :height => 50) %>
+              <%# else %>
+                <%#= image_tag(line_item.product.non_profit_cause == 'Animal Cause' ? ("/assets/icon-dog-foot.png") : (line_item.product.non_profit_cause == 'Environmental Cause' ? ("/assets/icon-glob.png") : ("/assets/icon-heart.png")), :width => 72, :height => 74) %>
+              <% #end %>
+            </div><br />
+            <p style="width: 220px; position: relative; left: 210px;"><a title="The United Nations Children's Fund" href="#"><%#= line_item.product.non_profit_cause.capitalize.split("_").join(" ") %></a></p>
+          </div>
+        </li> -->
+        <li>
+          <%= form_for @comment, :url => create_comment_product_path(line_item.product, :line_item_id => line_item.id), :method => 'POST', :remote => true do |f| %>
+          <span id="error_comment_<%= line_item.id %>" style="color: red;font-weight: bold;font-size: 14px;display: none;">Body Con't be Blank</span>
+          <span id="success_comment_<%= line_item.id %>" style="color: green;font-weight: bold;font-size: 14px;display: none;">Successfully Commented.</span>
+          <%= f.text_area :body, :rows => 3, :cols => 30, :placeholder => "Enter notes", :id => "body_text_#{line_item.id}" %>
+          <%= f.submit "Comment" %>
+          <% end %>
+        </li>
+
+
+      </ul>
+    </div>
+    <% end %>
+    <% else %>
+    <div style="margin-left: 90px;text-align:center">
+      <%= image_tag("/assets/cart.png") %>
+    </div>
+    <% end %>
+    <div class="clearFix"></div>
+

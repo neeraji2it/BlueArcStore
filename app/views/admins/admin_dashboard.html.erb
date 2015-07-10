@@ -1,0 +1,81 @@
+<ul class="menu-dashboard">
+  <li class="img-order">
+    <div>
+      <h4><%= Order.where("status = 'Success'").count %><br><span>Orders</span></h4>
+      <%= link_to "VIEW MORE", "", :class => "link-viewmore" %>
+    </div>
+  </li>
+  <li class="img-users">
+    <div>
+      <h4><%= User.where("role = 'buyer'").count %><br><span>Users</span></h4>
+      <%= link_to "VIEW MORE", buyer_admins_path(), :class => "link-viewmore" %>
+    </div>
+  </li>
+  <li class="img-revenue">
+    <div>
+      <h4><span style="position: relative;float: right;"><%= number_to_currency(Order.where("status = 'Success'").sum {|item| item.net_payment.to_i}) %></span><br><span>Revenue</span></h4>
+      <%= link_to "VIEW MORE", "", :class => "link-viewmore" %>
+    </div>
+  </li>
+  <li class="img-nonProfit">
+    <div>
+      <h4><%= User.where("role = 'non-profit'").count %><br><span>Non-Profit</span></h4>
+      <%= link_to "VIEW MORE", non_profit_admins_path(), :class => "link-viewmore" %>
+    </div>
+  </li>
+  <li class="img-sellers">
+    <div>
+      <h4><%= User.where("role = 'seller'").count %><br><span>Sellers</span></h4>
+      <%= link_to "VIEW MORE", seller_admins_path(), :class => "link-viewmore" %>
+    </div>
+  </li>
+</ul>
+
+<div class="commonrow">
+  <div class="dashboardColumn">
+    <h1 class="icon-newUserAnalytics"><span>New User Analytics</span></h1>
+    <div class="tablebox table-newUserAnalytics">
+      <div class="row">
+        <div class="column">.</div>
+      </div>
+      <div class="row">
+        <div style="float: right;position: relative;top: -3px;width: 400px;z-index: 1030;left: 10px;">
+          <%= form_tag week_admins_path, :autocomplete => 'off', :method => 'Get', :remote => true do %>
+            <%= text_field_tag :from_date,'', :placeholder => "Start Date", :style => 'width: 120px;' %>-
+            <%= text_field_tag :to_date,'', :placeholder => "End Date", :style => 'width: 120px;' %>
+            <%= submit_tag "Graph", :id => "Graph", :style => 'position: relative; padding: 6px 14px 3px 14px;' %>
+          <% end %>
+        </div>
+        <div id="container" style="height: 400px; min-width: 100px;position: relative;top: 25px;"></div>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <div class="img-graph-1">
+          <%= render :partial => 'week' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dashboardColumn" style="float: right;margin-right: -10px;margin-top: -462px;position: relative;width: 44%;">
+  <h1 class="icon-latestOrders"><span>Latest Orders</span></h1>
+  <div id='latest_orders'>
+    <%= render :partial => 'latest_orders' %>
+  </div>
+</div>
+</div>
+<div class="commonrow">
+  <div class="dashboardColumn">
+    <h1 class="icon-latestProductRequests"><span>Latest Product Requests</span></h1>
+    <div id='pending_products'>
+      <%= render :partial => 'pending_products' %>
+    </div>
+  </div>
+  <div class="dashboardColumn">
+    <h1 class="icon-enquiries"><span>Enquiries</span></h1>
+    <div class="tablebox table-enquiries">
+      <div class="row">
+        <div class="column">.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render :partial => '/profiles/dates' %>

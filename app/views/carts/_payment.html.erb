@@ -1,0 +1,15 @@
+<% @params = {'sid' => SID, 'mode' => '2CO', 'merchant_order_id' => current_cart.id} %>
+
+
+<% i=0 %>
+<% for line_item in current_cart.line_items %>
+    <% @params['li_'+i.to_s+'_product_id'] = line_item.product.id.to_s %>
+    <% @params['li_'+i.to_s+'_name'] = line_item.product.title %>
+    <% @params['li_'+i.to_s+'_price'] = line_item.product.price %>
+    <% @params['li_'+i.to_s+'_quantity'] = line_item.quantity.to_s %>
+    <% i+=1 %>
+<% end %>
+
+<% @form = Twocheckout::Checkout.form(@params, "Checkout with 2Checkout") %>
+<%p @form %>
+<%= @form.html_safe %>

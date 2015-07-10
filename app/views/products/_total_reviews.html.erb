@@ -1,0 +1,39 @@
+<span style="position: relative;width: 75px;">Sort by: <%= select_tag :sort, options_for_select([["Select", ""],["Most Recent","Desc"],["Highest Rating", "highest"],["Lowest Rating", "lowest"]], params[:sort]), :onChange => "client_logos(#{@product.id}, this)" %></span>
+<span style="position: relative;float: right; width: 75px;"><%= will_paginate @reviews, :param_name => 'review_page', :page_links => false, :previous_label => "PREV", :next_label => "NEXT" %></span>
+<hr />
+<% for review in @reviews %>
+  <table width="100%;" style="line-height: 25px;">
+    <tr>
+      <td>
+        <div id="stars-rating">
+          <div class="stars-<%=h review.rating.html_safe %> ratings"></div>
+        </div>
+      </td>
+      <td></td>
+      <td><b><%= review.name %></b></td>
+    </tr>
+    <tr>
+      <td>
+        <b><%= review.title %></b> - <%= review.created_at.strftime("%d/%m/%Y") %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p style="width: 800px;"><%= review.message %></p>
+      </td>
+    </tr>
+  </table>
+<% end %>
+<hr />
+<div style="position: relative; left: 930px; width: 75px;">
+  <%= will_paginate @reviews, :param_name => 'review_page', :page_links => false, :previous_label => "PREV", :next_label => "NEXT" %>
+</div>
+<hr />
+<script>
+  $(function() {
+    $(".pagination a").click(function() {
+      $.getScript(this.href);
+      return false;
+    });
+  });
+</script>

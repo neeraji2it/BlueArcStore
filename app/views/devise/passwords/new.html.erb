@@ -1,0 +1,30 @@
+<div class="content">
+  <div class="loginColumn forgotBox">
+    <h4>Forgot your password?</h4>
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <ul class="login-yourAccount">
+        <li>
+          <p>Email:</p>
+          <p><%= f.email_field :email, :placeholder => "E-mail" %></p>
+        </li>
+      </ul>
+
+      <input class="fright" type="submit" title="Continue" value="Continue" />
+    <% end %>
+  </div>
+</div>
+<style>
+  h2{
+    display: none;
+  }
+  #slider{
+    min-height: 300px;
+  }
+  #error_explanation{
+    color: red;
+    position: relative;
+    left: -40px;
+  }
+</style>

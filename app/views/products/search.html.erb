@@ -1,0 +1,32 @@
+<div class="content">
+  <div id="leftColumn">
+    <div class="menu-categories">
+      <h1><span>All Items</span></h1>
+      <ul>
+        <% Category.where("parent_id is null").each do |category| %>
+          <li><%= link_to category.name, category_path(:categories => category.id) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <%= render :partial => '/home/filter' %>
+  </div>
+
+  <% if @products.present? %>
+    <div id="rightColumn">
+      <div class="list_carousel list-search">
+        <ul id="caroulproduct">
+          <% for product in @products  %>
+            <li>
+              <%= link_to image_tag(product.images.first.image.url(:original), :width => "200", :height => "150", :style => 'border-radius: 10px;'), product_path(product) %>
+              <%= render :partial => '/carts/products', :locals => {:product => product} %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% else %>
+    No Results<br />
+    Browse <%= link_to "Products", category_path, :style => 'color: blue;' %>
+  <% end %>
+  <div class="clearFix"></div>
+</div>

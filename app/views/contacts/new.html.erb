@@ -1,0 +1,56 @@
+<div class="causesBox">
+  <h3>Contact Us</h3>
+ <link href="/assets/font-awesome.min.css" rel="stylesheet">
+  <div class="half-width">
+
+          Have a question, concern or just feel like saying hi?<br />
+      Fill out the contact form below and we will be in touch with you shortly.
+    
+
+    
+  
+  <%= form_for @contact, :url => contact_path, :html => {:method => 'POST'}, :remote => true do |f| %>
+    <ul style="margin-left: -36px;width: 100px;padding: 0px 40px;">
+      <% @contact.errors.full_messages.each_with_index do |msg, index| %>
+        <li style="color: red;line-height: 20px;"><%= index+1 %>. <%= msg %></li>
+      <% end %>
+    </ul>
+    <table style='line-height: 60px;'>
+      <tr>
+        <td>Name:</td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td><%= f.email_field :email %></td>
+      </tr>
+      <tr>
+        <td>Option:</td>
+        <td><%= f.select :option, %w(Question Issue) %></td>
+      </tr>
+      <tr>
+        <td>Message:</td>
+        <td><%= f.text_area :message, :cols => 10, :rows => 2 %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit "Contact" %></td>
+      </tr>
+    </table>
+  <% end %>
+  </div>
+  <div class="half-width">
+    <div class="contact-no">
+      <h2>  Customer Support</h2>
+      <i class="fa fa-phone"></i>+1-845-263-1532 - International <br>
+      <i class="fa fa-phone"></i>   +09480018881 - Domestic
+         </div> 
+    </div>
+
+</div>
+
+<style type="text/css">
+.half-width{ width: 50%; float: left; }
+ .contact-no{ text-align: right;}
+
+</style>

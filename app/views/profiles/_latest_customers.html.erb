@@ -1,0 +1,18 @@
+<% if @latest_customers.present? %>
+  <div class="tablebox">
+    <div class="row">
+      <div class="column">Name</div>
+      <div class="column">Order Amount</div>
+      <div class="column w49">City/Country</div>
+    </div>
+    <% for order in @latest_customers %>
+      <div class="row">
+        <div class="column"><%= order.user.username %></div>
+        <div class="column"><%= number_to_currency(order.net_payment) %></div>
+        <div class="column w49"><%= order.user.city %> City/<%= order.user.country %></div>
+      </div>
+    <% end %>
+  </div>
+  <span class="pagination" style='float: right;'><%= will_paginate @latest_customers, :param_name => 'latest_customer', :next_label => "Next", :previous_label => 'Prev', :page_links => false %></span>
+<% end %>
+<%= render :partial => '/profiles/pagination_script' %>
