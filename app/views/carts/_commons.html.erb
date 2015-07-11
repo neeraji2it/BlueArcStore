@@ -1,0 +1,29 @@
+<div class="col-item">
+  <div class="product-image-area">
+   <a class="product-image" title="Sample Product" href=<%= product_path(product)%>> 
+    <%= image_tag(product.images.first.image.url(:original), :width => "#{height}", :height => "#{height}") %>
+   </a>
+  </div>
+
+  <div class="actions-links"><span class="add-to-links"> <a title="magik-btn-quickview" class="magik-btn-quickview" href=<%= product_path(product)%>><span>quickview</span></a></span> </div>
+
+  <div class="info">
+    <div class="info-inner">
+      <div class="item-title"> <a title=" Sample Product" href=<%= product_path(product)%>> <%= product.title %> </a> </div>
+      <!--item-title-->
+      <div class="item-content">
+        <div class="price-box">
+          <p class="special-price"> <span class="price"> <%= number_to_currency(product.price) %> </span> </p>
+        </div>
+      </div>
+      <!--item-content--> 
+    </div>
+    <!--info-inner-->
+    <div class="actions">
+      <%= link_to '<button type="button" title="Add to Cart" class="button btn-cart"><span>Add to Cart</span></button>'.html_safe, add_to_cart_product_path(product, :qty => 1)%>
+    </div>
+    <!--actions-->
+    
+    <div class="clearfix"> </div>
+  </div>
+</div>
