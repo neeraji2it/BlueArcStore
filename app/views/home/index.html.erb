@@ -73,7 +73,7 @@
                     
                     <div class="info">
                       <div class="info-inner">
-                        <div class="item-title"> <a title=" Sample Product" href="product-detail.html"> <%= product.category.name %> </a> </div> 
+                        <div class="item-title"> <a title=" Sample Product" href=<%= category_path(:categories => product.category_id) %>> <%= product.category.name %> </a> </div> 
                       </div>
                       <div class="clearfix"> </div>
                     </div>
