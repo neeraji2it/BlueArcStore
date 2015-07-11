@@ -3,7 +3,7 @@
       <div class="nav-inner">    
         <!--End mobile-menu -->
         <ul id="nav" class="hidden-xs">
-          <li class="level0 parent drop-menu"><a href="grid.html"><span>Categories</span> 
+          <li class="level0 parent drop-menu"><a href=<%= category_path %>><span>Categories</span> 
             <!--<span class="category-label-hot">Hot</span> --> 
             </a>
             <ul style="display: none;" class="level1">
@@ -13,9 +13,8 @@
             </ul>
           </li>
 
-         <!--  <li class="level0 nav-8 level-top"> <a href="blog.html" class="level-top"> <span>Blog</span> </a> </li>
-          <li class="level0 nav-8 level-top"> <a href="contact.html" class="level-top"> <span>Contact</span> </a> </li>    
- -->
+           <li class="level0 nav-8 level-top"> <a href=<%= about_us_path %> class="level-top"> <span>About</span> </a> </li>
+          <li class="level0 nav-8 level-top"> <a href=<%= new_contact_path %> class="level-top"> <span>Contact</span> </a> </li>    
         </ul>
       </div>
     </div>
