@@ -1,7 +1,31 @@
-<%= form_for @email_alert, :url => create_alert_path(), :html => {:id => 'signup'}, :method => 'POST' do |f| %>
-  <%= f.submit "", :class => 'btn-email' %>
-  <%= f.email_field :email, :class => 'input-yourEmail', :placeholder => 'Enter your email --' %>
-  <h4>Sign Up To Our Newsletter</h4>
-    <p>You will be amazed at the discounted Wooden Handicrafts prices which we offer, we have the best Handicrafts. Keep in touch with us for latest updates </p>
-  <span style="position: relative;float: right;left: -165px;top: -25px;"><%= validation_error(@email_alert.errors['email']) %></span>
-<% end %>
+<div class="footer-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-7">
+        <div class="block-subscribe">
+          <div class="newsletter">
+            <%= form_for @email_alert, :url => create_alert_path(), :html => {:id => 'signup'}, :method => 'POST' do |f| %>
+              <h4>Newsletter</h4>
+              <%= f.text_field :email, :class => 'input-text required-entry validate-email', :placeholder => 'Enter your email address', :id => "newsletter1" %>
+                <button class="subscribe" id="subscribe-btn" title="Subscribe" type="submit"><span>Subscribe</span></button> 
+               <span style="position: relative;float: right;left: -165px;top: -25px;"><%= validation_error(@email_alert.errors['email']) %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-5">
+        <div class="social">
+          <ul>
+            <li class="fb"><a href="#"></a></li>
+            <li class="tw"><a href="#"></a></li>
+            <li class="googleplus"><a href="#"></a></li>
+            <li class="rss"><a href="#"></a></li>
+            <li class="pintrest"><a href="#"></a></li>
+            <li class="linkedin"><a href="#"></a></li>
+            <li class="youtube"><a href="#"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
