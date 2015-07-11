@@ -2,13 +2,25 @@
   <!-- breadcrumbs -->
   <div class="breadcrumbs">
     <div class="container">
+    
+
+
       <div class="row">
+        <% if params[:categories] %>
         <ul>
-          <li class="home"> <a href="index.html" title="Go to Home Page">Home</a><span>&mdash;›</span></li>
-          <li class=""> <a href="grid.html" title="Go to Home Page">Women</a><span>&mdash;›</span></li>
-          <li class="category13"><strong>Tops &amp; Tees</strong></li>
+          <% @sub_categories.each do |sub_category| %>
+            <li class="home"> <%= link_to sub_category.name, category_path(:sub_cats => sub_category.id) %><span>&mdash;›</span></li>
+          <% end %>
         </ul>
+        <% elsif params[:sub_cats] %>
+        <ul>
+        <% @sub_sub_categories.each do |sub_sub_category| %>
+          <li class="home"> <%= link_to sub_sub_category.name, category_path(:child => sub_sub_category.id) %><span>&mdash;›</span></li>
+        <% end %>
+        </ul>
+        <% end %>
       </div>
+
     </div>
   </div>
   <!-- End breadcrumbs --> 
@@ -39,6 +51,7 @@
         </section>
 
         <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9 wow bounceInUp animated">
+
           <div class="side-nav-categories">
             <div class="block-title"> Categories </div>
             <div class="box-content box-category">
