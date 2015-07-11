@@ -2,9 +2,6 @@
   <!-- breadcrumbs -->
   <div class="breadcrumbs">
     <div class="container">
-    
-
-
       <div class="row">
         <% if params[:categories] %>
         <ul>
@@ -20,7 +17,6 @@
         </ul>
         <% end %>
       </div>
-
     </div>
   </div>
   <!-- End breadcrumbs --> 
@@ -34,8 +30,8 @@
             <h1>Product Listing</h1>
           </div>
           
-          <% if @products.present? %>
           <div class="category-products">
+          <% if @products.present? %>
             <ul class="products-grid">
               <% for product in @products  %>
               <% if product.images.present? %>
@@ -44,10 +40,11 @@
               </li>
               <% end %>
               <% end %>
-
             </ul>
-          </div>
-          <% end %>
+            <% else %>
+              <span style="position: relative; color: red; text-align: center; font-size: 20px; left: 50px; top: 10px;">No Products</span>
+            </div>
+            <% end %>
         </section>
 
         <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9 wow bounceInUp animated">
