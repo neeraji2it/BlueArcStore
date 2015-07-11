@@ -13,8 +13,21 @@
           <div class="toplinks">
             <div class="links">
               <div class="myaccount"><a title="My Account" href=<%= carts_path %>><span class="hidden-xs">Cart</span></a></div>
-              <div class="check"><a title="Checkout" href=<%=  new_user_session_path %>><span class="hidden-xs">Log In</span></a></div>
+              
+              <div class="myaccount">
+              <% if current_user && current_user.role != 'admin' %>
+                <div><%= link_to "<span class='hidden-xs'>Dashboards</span>".html_safe, profile_profile_path(current_user) %></div>
+              <% end %>
+
               <div class="login"><a title="Login" href=<%= new_user_path(:role => 'buyer') %>><span class="hidden-xs">Sign Up</span></a></div>
+              <div class="check">
+                <% if current_user %>
+                  <%= link_to '<span class="hidden-xs">Logout</span>'.html_safe, destroy_user_session_path, :method => "DELETE" %>
+                <% else %>
+                 <a title="Log In" href=<%= new_user_session_path %>><span class="hidden-xs">Log In</span></a>
+                <% end %>
+              </div>       
+
             </div>
           </div>
           <!-- End Header Top Links --> 
