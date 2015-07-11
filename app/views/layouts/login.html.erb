@@ -15,7 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <!-- CSS Style -->
-<%= stylesheet_link_tag "css/animate.css", "css/bootstrap.min.css", "css/style.css", "css/index-2-css/revslider.css", "css/owl.carousel.css", "css/owl.theme.css", "css/font-awesome.css" %>
+<%= stylesheet_link_tag "css/animate.css", "css/bootstrap.min.css", "css/style.css", "css/nivo-slider-css/nivo-slider.css", "css/owl.carousel.css", "css/owl.theme.css", "css/font-awesome.css" %>
 
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,300,700,800,400,600' rel='stylesheet' type='text/css'>
@@ -26,7 +26,6 @@
   <%= render 'layouts/home/header' %>
   <%= render 'layouts/home/menu_nav' %>
   <!-- end nav -->
-  <%= render 'layouts/home/left_menu' %>
   
   <%= yield %>
   
@@ -41,79 +40,13 @@
 <script type="text/javascript" src="/assets/js/parallax.js"></script>
 <script type="text/javascript" src="/assets/js/common.js"></script>
 <script type="text/javascript" src="/assets/js/revslider.js"></script>
+<script type="text/javascript" src="/assets/js/nivo-slider-js/jquery.nivo.slider.js"></script>
 <script type="text/javascript" src="/assets/js/owl.carousel.min.js"></script>
- <script type="text/javascript">
-        jQuery(document).ready(function(){
-            jQuery('#rev_slider_4').show().revolution({
-                dottedOverlay: 'none',
-                delay: 5000,
-                startwidth: 585,
-                startheight: 460,
-
-                hideThumbs: 200,
-                thumbWidth: 200,
-                thumbHeight: 50,
-                thumbAmount: 2,
-
-                navigationType: 'thumb',
-                navigationArrows: 'solo',
-                navigationStyle: 'round',
-
-                touchenabled: 'on',
-                onHoverStop: 'on',
-                
-                swipe_velocity: 0.7,
-                swipe_min_touches: 1,
-                swipe_max_touches: 1,
-                drag_block_vertical: false,
-            
-                spinner: 'spinner0',
-                keyboardNavigation: 'off',
-
-                navigationHAlign: 'center',
-                navigationVAlign: 'bottom',
-                navigationHOffset: 0,
-                navigationVOffset: 20,
-
-                soloArrowLeftHalign: 'left',
-                soloArrowLeftValign: 'center',
-                soloArrowLeftHOffset: 20,
-                soloArrowLeftVOffset: 0,
-
-                soloArrowRightHalign: 'right',
-                soloArrowRightValign: 'center',
-                soloArrowRightHOffset: 20,
-                soloArrowRightVOffset: 0,
-
-                shadow: 0,
-                fullWidth: 'on',
-                fullScreen: 'off',
-
-                stopLoop: 'off',
-                stopAfterLoops: -1,
-                stopAtSlide: -1,
-
-                shuffle: 'off',
-
-                autoHeight: 'off',
-                forceFullWidth: 'on',
-                fullScreenAlignForce: 'off',
-                minFullScreenHeight: 0,
-                hideNavDelayOnMobile: 1500,
-            
-                hideThumbsOnMobile: 'off',
-                hideBulletsOnMobile: 'off',
-                hideArrowsOnMobile: 'off',
-                hideThumbsUnderResolution: 0,
-
-                hideSliderAtLimit: 0,
-                hideCaptionAtLimit: 0,
-                hideAllCaptionAtLilmit: 0,
-                startWithSlide: 0,
-                fullScreenOffsetContainer: ''
-            });
-        });
-        </script> 
+   <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
 </body>
 
 <!-- Mirrored from htmldemo.magikcommerce.com/ecommerce/eclipse-html-template/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Apr 2015 11:40:54 GMT -->
