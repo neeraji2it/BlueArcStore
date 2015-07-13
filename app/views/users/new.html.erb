@@ -3,7 +3,7 @@
   <div class="main container">
       <h4>
         Sign Up as <%= params[:role].capitalize %>
-        <span><%= render :partial => "/devise/shared/signin" if params[:role] == 'buyer' %></span>
+        <span style="float: right;left: -10px;position: relative;"><%= render :partial => "/devise/shared/signin" if params[:role] == 'buyer' %></span>
       </h4>
       <div>
         <%= form_for @user do |f| %>
