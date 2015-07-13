@@ -1,60 +1,71 @@
 <%= params[:role] ? (f.hidden_field :role, :value => params[:role]) : (f.hidden_field :role, :value => params[:user][:role]) %>
-<ul class="list-leftColumn">
-  <li>
-    <p><%= f.label :first_name, "First Name:#{mark}".html_safe %></p>
-    <%= f.text_field :first_name, :placeholder => "First Name" %>
-  </li>
-  <li>
-    <p><%= f.label :last_name, "Last Name#{mark}".html_safe %></p>
-    <%= f.text_field :last_name, :placeholder => "Last Name" %>
-  </li>
-  <li>
-    <p><%= f.label :email, "E-mail#{mark}".html_safe %></p>
-    <%= f.email_field :email, :placeholder => "E-mail" %>
-    <ul class="list-gender">						
-      <li><%= f.radio_button :gender, "Male" %>&nbsp;Male</li>
-      <li><%= f.radio_button :gender , "Female"%>&nbsp;Female</li>
-      <li><%= f.radio_button :gender ,"Rather not say"%>&nbsp;Rather not say</li>
-    </ul>	
-    <input type="checkbox" title="I agree to the Terms and Conditions" /> I agree to the <a class="link-blue" href="#" title="Terms and Conditions">Terms and Conditions</a>
-  </li>
-</ul>
-<ul class="list-leftColumn">
-  <li>
-    <p><%= f.label :username, "Username#{mark}".html_safe %></p>
-    <%= f.text_field :username,:onBlur => "get_username(this)", :placeholder => "Username" %>
-    <label class="error" style="display: none;">Not Available</label>
-    <label class="success" style="display: none;">Available</label>
-  </li>
-  <li>
-    <p><%= f.label :password, "Password#{mark}".html_safe %></p>
-    <%= f.password_field :password, :placeholder => "Password" %><span id="result"></span>
-  </li>
-  <li>
-    <p><%= f.label :password_confirmation, "Password Confirmation#{mark}".html_safe %></p>
-    <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation" %>
-  </li>
-</ul>
-<div class="clearFix"></div>
-</div>
-<div class="signupSellerBox">
-  <input class="btn-signup" type="submit" title="Sign Up" value="Sign Up" /><div>
-  </div>
-</div>
-<div class="clearFix"></div>
-<style>
-  h2{
-    display: none;
-  }
-  #result{
-    margin-left:5px;
-  }
+      <div class="account-login">
+        <div class="page-title">
+          <h2>Login or Create an Account</h2>
+        </div>  
+        <fieldset class="col4-set">
+          <legend>Login or Create an Account</legend>
+          
+          <div class="col-2 registered-users"><strong>Fill up the form.</strong>
+            <div class="content">
+             
+              <ul class="form-list">
+                <li>
+                  <label for="email">First Name <span class="required">*</span></label>
+                  <br>
+                  <%= f.text_field :first_name, :placeholder => "First Name", class: "input-text required-entry", id: "email" %>
+                </li>
 
-  .loginSeller .short{
-    color:#FF0000;
-  }
+                <li>
+                  <label for="email">Last Name <span class="required">*</span></label>
+                  <br>
+                  <%= f.text_field :last_name, :placeholder => "Last Name", class: "input-text required-entry", id: "email" %>
+                </li>
 
-  .loginSeller .strong{
-    color:#006400;
-  }
-</style>
+                <li>
+                  <label for="email">Email Address <span class="required">*</span></label>
+                  <br>
+                  <%= f.email_field :email, :placeholder => "E-mail", class: "input-text required-entry", id: "email" %>
+                </li>
+
+
+                <ul class="list-gender">           
+                  <li><%= f.radio_button :gender, "Male" %>&nbsp;Male</li>
+                  <li><%= f.radio_button :gender , "Female"%>&nbsp;Female</li>
+                  <li><%= f.radio_button :gender ,"Rather not say"%>&nbsp;Rather not say</li>
+                </ul> 
+
+                <input type="checkbox" title="I agree to the Terms and Conditions" /> I agree to the <a class="link-blue" href="#" title="Terms and Conditions">Terms and Conditions</a>
+
+                <li>
+                  <label for="email">UserName <span class="required">*</span></label>
+                  <br>
+                  <%= f.text_field :username, :placeholder => "UserName", class: "input-text required-entry", id: "email" %>
+                </li>
+
+                <li>
+                  <label for="pass">Password <span class="required">*</span></label>
+                  <br>
+                  <%= f.password_field :password, :placeholder => "Password", class: "input-text required-entry validate-password", id: "pass" %>
+                </li>
+
+                <li>
+                  <label for="pass">Password <span class="required">*</span></label>
+                  <br>
+                  <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation", class: "input-text required-entry validate-password", id: "pass" %>
+                </li>
+              </ul>
+              <div class="buttons-set">
+                <input class="button login" id="send2" type="submit" title="Sign" value="Sign Up" />
+              </div>
+              
+          </div>
+        </fieldset>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+ 
