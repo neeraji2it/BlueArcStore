@@ -46,11 +46,6 @@
         <!-- Search-col -->
         <div class="search-box">
         <%= form_tag search_products_path, :method => 'get', :html => {id: "search_mini_form"} do %>
-          <select name="category_id" class="cate-dropdown hidden-xs">
-          <% Category.all.each do |cat| %>
-            <option value='0'><%= cat.name %></option>
-          <% end %>
-          </select>
           <%= text_field_tag :query, "", :title => "Search Items ", :placeholder => "Search Items ", :id => "search", :maxlength => '70' %>
           <button id="submit-button" class="search-btn-bg"><span>Search</span></button>
         <% end %>
