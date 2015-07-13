@@ -43,6 +43,8 @@
                 <%= link_to "Forgot Your Password?", new_user_password_path, :class => "forgot-word" %>
             </div>
               <% end %>
+              <br/>
+              <p class="f12">By signing in you agree to the terms of the ><%= link_to "User Agreement", terms_conditions_path, :class => "forgot-word", :style => "color: #FC0000;" %> and <%= link_to "Privacy Policy", privacy_policy_path, :class => "forgot-word", :style => "color: #FC0000;" %></p>
           </div>
         </fieldset>
       </div>
