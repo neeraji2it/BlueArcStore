@@ -45,15 +45,15 @@
       <div class="col-lg-8 col-sm-6 col-md-8"> 
         <!-- Search-col -->
         <div class="search-box">
-          <form action="http://htmldemo.magikcommerce.com/ecommerce/eclipse-html-template/cat" method="POST" id="search_mini_form" name="Categories">
-            <select name="category_id" class="cate-dropdown hidden-xs">
-            <% Category.all.each do |cat| %>
-              <option value='0'><%= cat.name %></option>
-            <% end %>
-            </select>
-            <input type="text" placeholder="Search here..." value="" maxlength="70" class="" name="search" id="search">
-            <button id="submit-button" class="search-btn-bg"><span>Search</span></button>
-          </form>
+        <%= form_tag search_products_path, :method => 'get', :html => {id: "search_mini_form"} do %>
+          <select name="category_id" class="cate-dropdown hidden-xs">
+          <% Category.all.each do |cat| %>
+            <option value='0'><%= cat.name %></option>
+          <% end %>
+          </select>
+          <%= text_field_tag :query, "", :title => "Search Items ", :placeholder => "Search Items ", :id => "search", :maxlength => '70' %>
+          <button id="submit-button" class="search-btn-bg"><span>Search</span></button>
+        <% end %>
         </div>
         <!-- End Search-col --> 
       </div>
