@@ -1,36 +1,91 @@
-<div class="causesBox">
-  <h3>Contact Us</h3>
-  <p>
-    Have a question, concern or just feel like saying hi?<br />
-    Fill out the contact form below and we will be in touch with you shortly, or simply email us at <a href="mailto: info@indiancraftstudio.com"><strong>info@indiancraftstudio.com</strong>.</a>
-  </p>
-  <%= form_for @contact, :url => contact_path, :html => {:method => 'POST'}, :remote => true do |f| %>
-    <ul style="margin-left: -36px;width: 355px;padding: 0px 40px;">
-      <% @contact.errors.full_messages.each_with_index do |msg, index| %>
-        <li style="color: red;line-height: 20px;"><%= index+1 %>. <%= msg %></li>
-      <% end %>
-    </ul>
-    <table style='line-height: 60px;'>
-      <tr>
-        <td>Name:</td>
-        <td><%= f.text_field :name %></td>
-      </tr>
-      <tr>
-        <td>Email:</td>
-        <td><%= f.email_field :email %></td>
-      </tr>
-      <tr>
-        <td>Option:</td>
-        <td><%= f.select :option, %w(Question Issue) %></td>
-      </tr>
-      <tr>
-        <td>Message:</td>
-        <td><%= f.text_area :message, :cols => 20, :rows => 2 %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><%= f.submit "Contact" %></td>
-      </tr>
-    </table>
-  <% end %>
-</div>
+<div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <ul>
+          <li class="home"> <a title="Go to Home Page" href="/index">Home</a><span>&mdash;›</span></li>
+          <li class="category13"><strong>Contact Us</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- main-container -->
+  <div class="main-container col2-right-layout">
+    <div class="main container">
+      <div class="row">
+        <section class="col-main col-sm-9 wow bounceInUp animated">
+          <div class="page-title">
+            <h2>Contact Us</h2>
+          </div>
+           <%= form_for @contact, :url => contact_path, :html => {:method => 'POST'}, :remote => true do |f| %>
+          <div class="static-contain">
+            <fieldset class="group-select">
+              <ul>
+                <li id="billing-new-address-form">
+                  <fieldset>
+                    <legend>New Address</legend>
+                    <input type="hidden" name="billing[address_id]" value="" id="billing:address_id">
+                    <ul>
+                      <li>
+                        <div class="customer-name">
+                          <div class="input-box name-firstname">
+                            <label for="billing:firstname">Name <span class="required">*</span></label>
+                            <br><!-- 
+                            <input type="text" id="billing:firstname" name="billing[firstname]" value="" title="First Name" class="input-text "> -->
+                            <%= f.text_field :name, id: 'billing:name', title: 'Full Name', class: 'input-text' %>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                          <div class="input-box name-lastname">
+                            <label for="billing:lastname"> Email Address <span class="required">*</span> </label>
+                            <br>
+                            <%= f.email_field :email, id: 'billing:email', title: 'Email Address', class: 'input-text validate-email' %>
+                          </div>
+                      </li>
+                      <li>
+                         <div class="input-box">
+                          <label for="billing:email">Option <span class="required">*</span></label>
+                          <br>
+                          <%= f.select :option, %w(Question Issue), id: 'billing:email' ,title: "Option",class: "input-text validate-email"%>
+                        </div>
+                      </li>
+                      <li class="">
+                        <label for="comment">Message<em class="required">*</em></label>
+                        <br>
+                        <div style="float:none" class="">
+                          <%= f.text_area :message,id: "comment", title: "Comment", class: "required-entry input-text", :cols => "5", :rows =>"3"  %>
+                        </div>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </li>
+                <p class="require"><em class="required">* </em>Required Fields</p>
+                <input type="text" name="hideit" id="hideit" value="" style="display:none !important;">
+                <div class="buttons-set">
+                <%= f.submit "Contact",title: "Submit" ,class: "button submit"  %>
+                </div>
+              </ul>
+            </fieldset>
+          </div>
+          <% end %>
+        </section>
+<!--         <aside class="col-right sidebar col-sm-3 wow bounceInUp animated">
+          <div class="block block-company">
+            <div class="block-title">Company </div>
+            <div class="block-content">
+              <ol id="recently-viewed-items">
+                <li class="item odd"><a href="#">About Us</a></li>
+                <li class="item even"><a href="#">Sitemap</a></li>
+                <li class="item  odd"><a href="#">Terms of Service</a></li>
+                <li class="item even"><a href="#">Search Terms</a></li>
+                <li class="item last"><strong>Contact Us</strong></li>
+              </ol>
+            </div>
+          </div>
+        </aside> -->
+      </div>
+    </div>
+  </div>
+
+ 
+  
