@@ -22,16 +22,8 @@
                 </div>
                 <%= text_field_tag :authentication_code, nil, placeholder: 'Authentication token' %>
                 <br/>
-                <%= render :partial => 'payment'%>
-
-                <br/>
-                <div id="gateway">
-                  <%= form_tag "/payments/TestSsl.php" do %>
-                    <%= hidden_field_tag :amount, @cart.total_price %>
-                    <%= submit_tag "Checkout with ICICI" %>
-                  <% end %>
-                </div>
-
+                <%#= render :partial => 'payment'%>
+                <%= link_to "Checkout" %>
               </li>
             </ul>	
             <% if line_item.product.non_profit_cause == 'Any' %>
