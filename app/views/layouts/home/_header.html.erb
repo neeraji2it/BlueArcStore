@@ -61,11 +61,13 @@
       <div class="col-lg-2 col-sm-3 col-md-2">
         <div class="top-cart-contain">
           <div class="mini-cart">
-            <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <i class="glyphicon glyphicon-shopping-cart"></i>
-              <div class="cart-box"><span class="title">cart</span><span id="cart-total">2 item </span></div>
-              </a></div>
-            <div>
-            
+            <div data-toggle="dropdown1" data-hover="dropdown1" class="basket dropdown-toggle1"> 
+              <a href="/carts"> <i class="glyphicon glyphicon-shopping-cart"></i>
+              <div class="cart-box"><span class="title">cart</span><span id="cart-total"><%= current_cart.line_items.present? ? current_cart.line_items.count : 0 %> </span></div>
+              </a>
+            </div>
+
+            <!-- <div>
               <div style="display: none;" class="top-cart-content arrow_box">
                 <div class="block-subtitle">Recently added item(s)</div>
                 <ul id="cart-sidebar" class="mini-products-list">
@@ -92,7 +94,7 @@
                   <button class="view-cart" type="button"><span>View Cart</span></button>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div id="ajaxconfig_info" style="display:none"> <a href="#/"></a>
             <input value="" type="hidden">
