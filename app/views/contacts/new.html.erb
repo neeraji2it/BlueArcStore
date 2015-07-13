@@ -1,43 +1,44 @@
+<div class="page">
+<section class="main-container col1-layout">
+  <div class="main container">
+
 <div class="causesBox">
   <h3>Contact Us</h3>
  <link href="/assets/font-awesome.min.css" rel="stylesheet">
   <div class="half-width">
-
-          Have a question, concern or just feel like saying hi?<br />
-      Fill out the contact form below and we will be in touch with you shortly.
-    
-
-    
-  
+      Have a question, concern or just feel like saying hi?<br />
+      Fill out the contact form below and we will be in touch with you shortly.          
   <%= form_for @contact, :url => contact_path, :html => {:method => 'POST'}, :remote => true do |f| %>
     <ul style="margin-left: -36px;width: 100px;padding: 0px 40px;">
       <% @contact.errors.full_messages.each_with_index do |msg, index| %>
         <li style="color: red;line-height: 20px;"><%= index+1 %>. <%= msg %></li>
       <% end %>
     </ul>
-    <table style='line-height: 60px;'>
+    <table style='line-height: 60px; cellspacing: "1"; cellpadding: "1"'>
       <tr>
         <td>Name:</td>
-        <td><%= f.text_field :name %></td>
+        <td><%= f.text_field :name, class: "input-text required-entry" %></td>
       </tr>
-      <tr>
+      <br/>
+      <tr >
         <td>Email:</td>
-        <td><%= f.email_field :email %></td>
+        <td><%= f.email_field :email, class: "input-text required-entry" %></td>
       </tr>
       <tr>
         <td>Option:</td>
-        <td><%= f.select :option, %w(Question Issue) %></td>
+        <td><%= f.select :option, %w(Question Issue), class: "input-text required-entry" %></td>
       </tr>
       <tr>
         <td>Message:</td>
-        <td><%= f.text_area :message, :cols => 10, :rows => 2 %></td>
+        <td><%= f.text_area :message, :cols => 30, :rows => 2, class: "input-text required-entry" %></td>
       </tr>
       <tr>
         <td></td>
-        <td><%= f.submit "Contact" %></td>
+        <td><%= f.submit "Submit Contact", class: "button login" %></td>
       </tr>
     </table>
   <% end %>
+  <br/>
   </div>
   <div class="half-width">
     <div class="contact-no">
@@ -49,8 +50,15 @@
 
 </div>
 
+</div>
+</section>
+</div>
+
 <style type="text/css">
 .half-width{ width: 50%; float: left; }
  .contact-no{ text-align: right;}
-
+ td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
 </style>
