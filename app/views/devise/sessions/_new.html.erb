@@ -1,35 +1,56 @@
-<div class="content" style="border-radius:10px;background-color:#fafafa;border:1px solid #898989;box-shadow:1px 1px 1px #d0d0d0 inset; ">
-  <div class="loginColumn">
-    <h4>First timer? Register now</h4>
-    <h5>Benefits of creating an account</h5>
-    <ul class="login-uniqueProduct">
-      <li>Faster shopping</li>
-      <li>Instant order tracking</li>
-      <li>More options of products</li>
-    </ul>
-    <div class="login-register"><%= link_to "<input type='submit' title='Register' value='Register' />".html_safe, new_user_path(:role => 'buyer'), :style => 'text-decoration: none;' %></div>
-  </div>
-  <div class="loginColumn">
-    <h4>Sign in with your account</h4>
-    <% flash.each do |key, value| %>
-      <div style="color: red;font-weight: bold;"><%= value %></div>
-    <% end %>
-    <br />
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-      <ul class="login-yourAccount">
-        <li>
-          <p>Username:</p>
-          <p><%= f.email_field :email, :placeholder => "E-mail" %></p>
-        </li>
-        <li>
-          <p>Password:</p>
-          <p><%= f.password_field :password, :placeholder => "Password" %></p>
-          <p><%= link_to "Forgot Password?", new_user_password_path, :style => "color: #FC0000;" %></p>
-        </li>
-      </ul>
-      <input class="fright" type="submit" title="Sign" value="Sign" />
-    <% end %>
-    <p class="f12">By signing in you agree to the terms of the ><%= link_to "User Agreement", terms_conditions_path %> and <%= link_to "Privacy Policy", privacy_policy_path %></p>
-  </div>
-  <div class="clearFix"></div>
-</div>	
+<div class="page">
+  <section class="main-container col1-layout">
+    <div class="main container">
+      <div class="account-login">
+        <div class="page-title">
+          <h2>Login or Create an Account</h2>
+        </div>
+        <fieldset class="col2-set">
+          <legend>Login or Create an Account</legend>
+          <div class="col-1 new-users"><strong>New Customers</strong>
+            <div class="content">
+              <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+              <div class="buttons-set">
+                <button onclick="window.location='http://demo.magentomagik.com/computerstore/customer/account/create/';" class="button create-account" type="button"><span>Create an Account</span></button>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 registered-users"><strong>Registered Customers</strong>
+            <div class="content">
+              <p>If you have an account with us, please log in.</p>
+
+              <% flash.each do |key, value| %>
+                <div style="color: red;font-weight: bold;"><%= value %></div>
+              <% end %>
+              <br/>
+
+              <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+              <ul class="form-list">
+                <li>
+                  <label for="email">Email Address <span class="required">*</span></label>
+                  <br>
+                  <%= f.email_field :email, :placeholder => "E-mail", class: "input-text required-entry", id: "email" %>
+                </li>
+                <li>
+                  <label for="pass">Password <span class="required">*</span></label>
+                  <br>
+                  <%= f.password_field :password, :placeholder => "Password", class: "input-text required-entry validate-password", id: "pass" %>
+                </li>
+              </ul>
+              <div class="buttons-set">
+                <input class="button login" id="send2" type="submit" title="Sign" value="Login" />
+
+                <%= link_to "Forgot Your Password?", new_user_password_path, :class => "forgot-word" %>
+            </div>
+              <% end %>
+          </div>
+        </fieldset>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+  </section>
+</div>
