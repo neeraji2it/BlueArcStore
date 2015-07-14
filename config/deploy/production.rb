@@ -3,21 +3,21 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-# server '107.155.113.112', user: 'shivraj', roles: %w{app db web}, my_property: :my_value
+# server '63.142.250.83', user: 'shivraj', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
 
 
-role :app, %w{shivraj@107.155.113.112}
-role :web, %w{shivraj@107.155.113.112}
-role :db,  %w{shivraj@107.155.113.112}
-server '107.155.113.112', user: 'shivraj', roles: %w{web app db} #, my_property: :my_value
+role :app, %w{root@63.142.250.83}
+role :web, %w{root@63.142.250.83}
+role :db,  %w{root@63.142.250.83}
+server '63.142.250.83', user: 'root', roles: %w{web app db} #, my_property: :my_value
 
-set :domain, '107.155.113.112'
+set :domain, '63.142.250.83'
 set :deploy_to, '/var/www/bluearcstore.com/public_html'
 set :branch, 'master'
-set :deploy_user, 'shivraj'
+set :deploy_user, 'root'
 set :log_level, :debug
 set :rails_env, 'production'
 
