@@ -5,8 +5,6 @@ namespace :db do
       within release_path do
         with rails_env: fetch(:rails_env) do
           execute :rake, 'db:reset'
-          execute :rake, 'db:seed:product_categories'
-          # run "rm -rf #{release_path}/public/uploads"
         end
       end
     end
