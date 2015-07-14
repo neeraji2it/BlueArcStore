@@ -1,19 +1,24 @@
 <!-- Slider -->
   
+
   <div id="magik-slideshow" class="magik-slideshow">
     <div class="container">
       <div class="row">
+      <% @back_images = BannerImage.all %>
         <div class="col-sm-12 wow bounceInRight animated">
           <div class="slider-wrapper theme-default">
             <div id="slider" class="nivoSlider"> 
-            <img src="/assets/dashboards/images/slider-img/slide-img1.jpg" data-thumb="/assets/dashboards/images/slider-img/slide-img1.jpg" alt="banner" /> <a href="#">
-            <img src="/assets/dashboards/images/slider-img/slide-img2.jpg" data-thumb="/assets/dashboards/images/slider-img/slide-img2.jpg" alt="banner" title="This is an example of a caption" /></a> <img src="/assets/dashboards/images/slider-img/slide-img3.jpg" data-thumb="/assets/dashboards/images/slider-img/slide-img3.jpg" alt="banner" data-transition="slideInLeft" /> 
-            <img src="/assets/dashboards/images/slider-img/slide-img4.jpg" data-thumb="/assets/dashboards/images/slider-img/slide-img4.jpg" alt="banner" title="#htmlcaption" /> </div>
-            <div id="htmlcaption" class="nivo-html-caption"> <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>. </div>
+          <% for image in @back_images %>
+            <img src="<%= image.image.url(:original) %>" width='1170' height="460" data-transition="slideInLeft" /><%= image.image_description %> 
+          <% end %>
           </div>
-        
         </div>
       </div>
     </div>
   </div>
+
+
+
+
+
    <!-- End Slider -->
