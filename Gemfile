@@ -42,6 +42,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'test-unit'
 
 
 # deployment

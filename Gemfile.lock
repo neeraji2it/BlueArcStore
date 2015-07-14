@@ -183,6 +183,7 @@ GEM
       multi_json (~> 1.0)
       xml-simple
     polyglot (0.3.5)
+    power_assert (0.2.2)
     prototype-rails (3.2.1)
       rails (~> 3.2)
     quiet_assets (1.1.0)
@@ -243,6 +244,8 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    test-unit (3.0.8)
+      power_assert
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -316,6 +319,7 @@ DEPENDENCIES
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   social-share-button
+  test-unit
   therubyracer
   thin
   twitter
