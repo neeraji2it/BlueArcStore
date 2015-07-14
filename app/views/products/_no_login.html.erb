@@ -1,164 +1,99 @@
-<div class="page">
-  <section class="main-container col1-layout">
+ <section class="main-container col1-layout">
     <div class="main container">
+      <div class="col-main">
+        <div class="row">
+          <div class="product-view">
+            <div class="product-essential">
+                <input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">
+                <div class="product-img-box col-sm-5 wow bounceInRight animated">
+                  <div class="product-image">
+                    <div class="large-image">
+                     <a href=<%= @product.images.first.image.url(:original) %> class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> 
+                     <%= image_tag(@product.images.first.image.url(:original)) %>
+                    </a> 
+                    </div>
 
-<div class="content">
-  <div class="breadcrumb">
-    <% categories = [] %>
-    <% c = @category %>
-    <% while(c.present?) do %>
-        <% categories << c %>
-        <% c = Category.find_by_id(c.parent_id) %>
-      <% end %>
-      <ul>
-        <% categories.reverse.each do |category| %>
-          <li><%= link_to category.name, category_path(:categories => @product.category_id) %></li>
-          <% if categories.reverse.last != category %>
-            <%= "-" %>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-    <div class="commonrow">
-      <div class="productDetails-leftColumn">
-        <div class="midSec">
-          <span class='zoom' id='ex1'>
-            <% if @product.images.present? %>
-              <%= image_tag(@product.images.first.image.url(:original), :width => '450px', :height => '350px', :style => 'border-radius: 5px;') %>
-            <% end %>
-          </span>
-        </div><br />
-        <div class="leftSec" style="max-height: 400px;overflow: auto;line-height: 75px;">
-          <% if !@product.images.empty? %>
-            <% for image in @product.images %>
-              <%= link_to image_tag(image.image.url(:original), :width => "70", :height => "70", :style => 'border-radius: 5px;'), "#" %>
-            <% end %>
-          <% else %>
-            <%= image_tag("no_image.gif", :width => "70") %>
-          <% end %>
-        </div>
-      </div>
-      <div class="productDetails-rightColumn">
-        <%= form_tag add_to_cart_product_path(@product), :method => 'get' do %>
-          <h2><%= @product.title %><br /><span><%= number_to_currency(@product.price) %></span></h2>
-          Qty: <%= select_tag :qty, options_for_select([[1, 1],[2, 2],[3, 3],[4, 4],[5, 5]]) %>
-          <style>
-            select{
-              min-width: 30px;
-            }
-          </style>
-          <br /><br /><div class="icon-addCart" style="padding-top: 7px;"><%= (current_user and current_user.role == 'seller') ? () : (submit_tag "Add to Cart") %></div>
-        <% end %>
-        <div class="commonrow">
-          <div class="column-share">Share Now</div>
-          <ul class="list-media">
-            <%= social_share_button_tag(@product.description, :url => "#{request.original_url}",:image => "#{SITE}"+@product.images.first.image.url(:original), :'data-type' => 'photo') %>
-          </ul>
-        </div>
-        <p><%= @product.description %></p>
-      </div>
-    </div>
-    <div id="reviews">
-      <hr />
-      <b><%= "Ratings & Reviews (#{@product.reviews.count})".upcase %></b>
-      <%= link_to "Write Review", review_product_path(@product), :style => 'float: right; color: #01A5DE;' %>
-      <hr />
-      <% if @reviews.present? %>
-        <% ss = Review.where("product_id = #{@product.id}").sum {|a| a.rating.to_i} %>
-        <% dd = Review.where("product_id = #{@product.id}").count %>
-        <div id="stars-rating" style="left: 400px; margin-top: -17px; position: relative; top: -15px;">
-          <div class="stars-<%=h ss/dd %> ratings"></div>
-          <span style="position: relative; top: -15px; left: 85px;"><%= ss/dd %> Stars</span>
-        </div>
-        <div id='tot_reviews'>
-          <%= render :partial => 'total_reviews' %>
-        </div>
-      <% end %>
-    </div>
-    <ul class="list-productDetail">
-      <li>
-        <h1><span>Seller Infomation</span></h1>
-        <div>
-          <div class="thum-productDetail"><%= image_tag(@product.user.avatar.url(:original), :width => '75',:height => '83', :style => 'border-radius: 5px;')%></div>
-          <p><%= link_to @product.user.username, seller_path(@product.user.id), :class => "link-blue" %><br /></p>
-          <%= link_to "Contact >>", new_user_contact_shop_owner_path(@product.user) %>
-          <div class="clearFix"></div>
-        </div>
-      </li>
-      <!--
-      <li>
+                    <div class="flexslider flexslider-thumb">
+                      <ul class="previews-list slides">
+                      <% if !@product.images.empty? %>
+                        <% for image in @product.images %>
+                        <li>
+                          <a href=<%= image.image.url(:original) %> class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '<%= image.image.url %>' ">
+                          <%= image_tag(image.image.url(:original)) %>
+                          </a>
+                        </li>
+                        <% end %>
+                      <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <!-- end: more-images -->
+                  
+                  <div class="clear"></div>
+                </div>
+                <div class="product-shop col-sm-7 wow bounceInLeft animated">
+                  <div class="product-next-prev"> <a class="product-next" href="#"><span></span></a> <a class="product-prev" href="#"><span></span></a> </div>
+                  <div class="product-name">
+                    <h1><%= @product.title %></h1>
+                  </div>
+                 
+                <!--   <p class="availability in-stock"><span>In Stock</span></p> -->
+                  <div class="price-block">
+                    <div class="price-box">
+                
+                      <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> <%= number_to_currency(@product.price) %> </span> </p>
+                    </div>
+                  </div>
+                  <div class="short-description">
+                    <h2>Quick Overview</h2>
+                    <p><%= @product.description %></p>
+                  </div>
 
-        <h1><span>Donation</span></h1>
-        <div>
-          <div class="thum-productDetail"><canvas id="canvas" height="72" width="75"></canvas></div>
-          <p><%#= @product.non_profit_percentage %><%= "%" %>  of the proceeds <br>will be donated.</p>
-        </div>
-      </li>
-      <li>
- 
-      #single product causes #
-        <h1><span>Recipients of Donations</span></h1>
-        <div>
-          <div class="thum-productDetail" style="position: relative;width: auto;">
-            <%# if @product.non_profit_cause == "Any" %>
-              <%#= image_tag("/assets/icon-dog-foot.png", :width => 50, :height => 50) %>
-              <%#= image_tag("/assets/icon-glob.png", :width => 50, :height => 50) %>
-              <%#= image_tag("/assets/icon-heart.png", :width => 50, :height => 50) %>
-            <%# else %>
-              <%#= image_tag((@product.non_profit_cause == 'Animal Cause' ? ("/assets/icon-dog-foot.png") : (@product.non_profit_cause == 'Environmental Cause' ? ("/assets/icon-glob.png") : ("/assets/icon-heart.png"))), :width => 72, :height => 74) %>
-            <%# end %>
-          </div>
-          <p style="position: relative; float: left; margin-left: 8px;"><a title="The United Nations Children's Fund" href="#"><%#= @product.non_profit_cause.capitalize.split("_").join(" ") %></a></p>
-        </div>  
-
-
-      </li>
-      -->
-    </ul>
-    <% if @product.shipping_products.present? %>
-      <div class="content">
-        <div id="tab-shippingDetails" class="list-tab">
-          <ul class="nav">
-            <li><a href="#itemDetails" title="Item Details" class="current">Item Details</a></li>
-            <!-- <li><a href="#shippingPolicies">Shipping &amp; Policies</a></li> -->
-          </ul>
-          <div class="list-wrap">
-            <div id="itemDetails">
-              <p><%= @product.description %></p>
+              <%= form_tag add_to_cart_product_path(@product), :method => 'get' do %>
+                  <div class="add-to-box">
+                    <div class="add-to-cart">
+                      <label for="qty">Quantity:</label>
+                      <div class="pull-left">
+                        <div class="custom pull-left">
+                        <%= text_field_tag :qty, "1", class: "input-text qty", maxlength: "12", id: "qty" %>
+                          <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="icon-plus">&nbsp;</i></button>
+                          <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="icon-minus">&nbsp;</i></button>
+                        </div>
+                      </div>
+                      <div class="pull-left">
+                        <% unless (current_user and current_user.role == 'seller') %>
+                          <button class="button btn-cart" title="Add to Cart" type="submit"><span><i class="icon-basket"></i> Add to Cart</span></button>
+                        <% end %>
+                      </div>
+                    </div>      
+                  </div>
+                <%end%>
+                </div>
+              
             </div>
-            <div id="shippingPolicies" class="hide">
-              <h2>Payment Methods</h2>
-              <p><img alt="" title="" src="/assets/payment-mode_1.png"></p>
-              <h5><%= @product.shipping %></h5>
-              <ul class="list-shippingDetails">	
-                <li>
-                  <div class="column">Ship To</div>
-                  <div class="column">Costs</div>
-                  <div class="column">Each item</div>
-                </li>
-                <% for shipping in @product.shipping_products %>
-                  <li>
-                    <div class="column"><%= shipping.country %></div>
-                    <div class="column"><%= number_to_currency(shipping.cost) %></div>
-                    <div class="column"><%= number_to_currency(shipping.item_cost) %></div>
-                  </li>
-                <% end %>
-              </ul>
+            <div class="product-collateral">
+              <div class="col-sm-12 wow bounceInUp animated">
+                <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
+                  <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> Product Description </a> </li>
+                               </ul>
+                <div id="productTabContent" class="tab-content">
+                  <div class="tab-pane fade in active" id="product_tabs_description">
+                    <div class="std">
+                      <p><%= @product.description %></p> 
+                    </div>
+                  </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="box-additional">
+                  <div class="related-pro wow bounceInUp animated">
+                    
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="clearFix"></div>
       </div>
-    <% end %>
-    <div class="clearFix"></div>
-  </div>
-
-</div></section></div>
-
-  <style>
-    .zoom {
-      display:inline-block;
-      position: relative;
-    }
-  </style>
-
+    </div>
+  </section>
