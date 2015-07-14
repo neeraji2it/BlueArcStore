@@ -61,6 +61,10 @@ ICS::Application.routes.draw do
       get :edit_lineitem
       put :update_lineitem
     end
+    collection do
+      delete :empty_carts
+    end
+
   end
 
   resources :products do

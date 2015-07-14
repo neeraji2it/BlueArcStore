@@ -1,13 +1,15 @@
 <div class="page">
   <section class="main-container col1-layout">
     <div class="main container">
-
+    <% if @user_products.present? %>
     <div class="content">
       <div id='all_items'>
         <%= render :partial => 'all_items'%>
       </div>
     </div>
-
+    <% else %>
+    	<P>cart is nil</P>
+    <% end %>
     </div>
   </section>
 </div>

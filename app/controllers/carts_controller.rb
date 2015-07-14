@@ -39,6 +39,16 @@ class CartsController < ApplicationController
     end
   end
 
+
+  def empty_carts
+    if current_cart.line_items.present? 
+      current_cart.destroy
+      session[:cart] = nil
+    end
+    redirect_to carts_path
+  end
+
+
   def destroy
     @cart = LineItem.find(params[:id])
     if @cart.destroy
@@ -49,8 +59,6 @@ class CartsController < ApplicationController
       redirect_to carts_path
     end
   end
-
-
   def return
       @notification = Twocheckout::ValidateResponse.purchase({:sid => SID, :secret => SECRET, :order_number => params['order_number'], :total => params['total'], :key => params['key']})
 
