@@ -14,10 +14,39 @@ User.create(:email => 'admin@gmail.com', :password => '12345678', :password_conf
 
 
 unless Category.count > 0
-  @category = Category.create(:name => 'Electronics')
-  SubCategory.create(:name => 'Computer Peripherals', :category_id => @category.id)
-  SubCategory.create(:name => 'Computer Software', :category_id => @category.id)
+  Category.create(:name => 'Electronics')
+
+  
+  @cat1 = Category.where(:name => "Electronics").first
+  #Jewellery
+  SubCategory.create(:name => 'Computer Peripherals', :category_id => @cat1.id)
+  @subcat1 = SubCategory.where(:name => 'Computer Peripherals').first
+
+  SubCategory.create(:name => 'Computer Software', :category_id => @cat1.id)
+  @subcat2 = SubCategory.where(:name => 'Computer Software').first
+  #****************************************************************************
+  #Child Category Section
+  #Cloth Men
+  SubSubCategory.create(:name => 'Printers', :sub_category_id => @subcat1.id)
+  SubSubCategory.create(:name => 'Inks', :sub_category_id => @subcat1.id)
+  SubSubCategory.create(:name => 'Ram', :sub_category_id => @subcat1.id)
+  SubSubCategory.create(:name => 'Toners', :sub_category_id => @subcat1.id)
+  SubSubCategory.create(:name => 'Scanners', :sub_category_id => @subcat1.id)
+  SubSubCategory.create(:name => 'Moniter', :sub_category_id => @subcat1.id)
+  SubSubCategory.create(:name => 'CPU', :sub_category_id => @subcat1.id)
+  SubSubCategory.create(:name => 'Portable Projector', :sub_category_id => @subcat1.id)
+  
+                   
 end
+
+
+#@cat2 = Category.where(:name => "Clothing").first
+#   #Clothing
+#   SubCategory.create(:name => 'Men', :category_id => @cat2.id)
+#   @subcat21=SubCategory.where(:name => 'Men').first
+
+
+
 
 # if Category.count == 0
 #   Category.create(:name => 'Jewellery')
