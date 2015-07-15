@@ -3,7 +3,7 @@
   <div class="commonrow">
     <div class="productDetails-leftColumn"><div class="midSec"><%= image_tag(@product.images.first ? @product.images.first.image.url(:original) : "no_image.gif", :width => '450px', :height => '350px') %></div><br />
       <div class="leftSec" style="max-height: 400px;overflow: auto;">
-        <% if !@product.images.empty? %>
+        <% if !@product.images.blank? %>
           <% for image in @product.images %>
             <%= link_to image_tag(image.image.url(:original), :width => "70", :height => "70"), "#" %>
           <% end %>
