@@ -42,6 +42,11 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
+      within release_path do
+      	execute :rake, 'cache:clear'
+      	execute 'touch /var/www/bluearcstore.com/public_html/current/tmp/restart.txt'
+      	execute 'cd /var/www/bluearcstore.com/ && chmod -R 775 ./'
+      end
     end
   end
 
