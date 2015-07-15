@@ -15,7 +15,7 @@
 
                     <div class="flexslider flexslider-thumb">
                       <ul class="previews-list slides">
-                      <% if !@product.images.empty? %>
+                      <% if !@product.images.blank? %>
                         <% for image in @product.images %>
                         <li>
                           <a href=<%= image.image.url(:original) %> class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '<%= image.image.url %>' ">
