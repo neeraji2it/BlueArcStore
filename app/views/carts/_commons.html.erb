@@ -1,8 +1,10 @@
 <div class="col-item">
   <div class="product-image-area">
+  <% if product.images.present? %>
    <a class="product-image" title="Sample Product" href=<%= product_path(product)%>> 
     <%= image_tag(product.images.first.image.url(:original), :width => "#{height}", :height => "#{height}") %>
    </a>
+   <% end %>
   </div>
 
   <div class="actions-links"><span class="add-to-links"> <a title="magik-btn-quickview" class="magik-btn-quickview" href=<%= product_path(product)%>><span>quickview</span></a></span> </div>
