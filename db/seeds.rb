@@ -18,25 +18,51 @@ unless Category.count > 0
 
   
   @cat1 = Category.where(:name => "Electronics").first
+
   #Jewellery
   SubCategory.create(:name => 'Computer Peripherals', :category_id => @cat1.id)
   @subcat1 = SubCategory.where(:name => 'Computer Peripherals').first
 
   SubCategory.create(:name => 'Computer Software', :category_id => @cat1.id)
   @subcat2 = SubCategory.where(:name => 'Computer Software').first
+
+
+  SubCategory.create(:name => 'Laptops', :category_id => @cat1.id)
+  @subcat3 = SubCategory.where(:name => 'Laptops').first
+  SubCategory.create(:name => 'Network Components', :category_id => @cat1.id)
+  @subcat4 = SubCategory.where(:name => 'Network Components').first
+ SubCategory.create(:name => 'Tablets', :category_id => @cat1.id)
+  @subcat5 = SubCategory.where(:name => 'Tablets').first
+
+
   #****************************************************************************
   #Child Category Section
   #Cloth Men
   SubSubCategory.create(:name => 'Printers', :sub_category_id => @subcat1.id)
-  SubSubCategory.create(:name => 'Inks', :sub_category_id => @subcat1.id)
+  SubSubCategory.create(:name => 'Ink Cartridges', :sub_category_id => @subcat1.id)
   SubSubCategory.create(:name => 'Ram', :sub_category_id => @subcat1.id)
   SubSubCategory.create(:name => 'Toners', :sub_category_id => @subcat1.id)
   SubSubCategory.create(:name => 'Scanners', :sub_category_id => @subcat1.id)
-  SubSubCategory.create(:name => 'Moniter', :sub_category_id => @subcat1.id)
+  SubSubCategory.create(:name => 'Moniters', :sub_category_id => @subcat1.id)
   SubSubCategory.create(:name => 'CPU', :sub_category_id => @subcat1.id)
-  SubSubCategory.create(:name => 'Portable Projector', :sub_category_id => @subcat1.id)
+  SubSubCategory.create(:name => 'Portable Projector', :sub_category_id => @subcat3.id)
   
-                   
+  SubSubCategory.create(:name => 'HP', :sub_category_id => @subcat3.id)
+  SubSubCategory.create(:name => 'Lenovo', :sub_category_id => @subcat3.id)
+  SubSubCategory.create(:name => 'Dell', :sub_category_id => @subcat3.id)
+  SubSubCategory.create(:name => 'Compaq', :sub_category_id => @subcat3.id) 
+
+  SubSubCategory.create(:name => 'Routers', :sub_category_id => @subcat4.id)
+  SubSubCategory.create(:name => 'Switches', :sub_category_id => @subcat4.id)
+  SubSubCategory.create(:name => 'Cables', :sub_category_id => @subcat4.id)
+  SubSubCategory.create(:name => 'DataCards', :sub_category_id => @subcat4.id) 
+  SubSubCategory.create(:name => 'Network Interface Cards', :sub_category_id => @subcat4.id)
+
+SubSubCategory.create(:name => 'Mi Tablets', :sub_category_id => @subcat5.id)
+  SubSubCategory.create(:name => 'Lenovo Tablets ', :sub_category_id => @subcat5.id)
+  SubSubCategory.create(:name => 'Asus Tablets', :sub_category_id => @subcat5.id)
+  SubSubCategory.create(:name => 'Samsung Tablets', :sub_category_id => @subcat5.id) 
+
 end
 
 
@@ -55,7 +81,7 @@ end
 #   Category.create(:name => "Footwear")
 #   Category.create(:name => 'Accessories')
 #   Category.create(:name => 'Gift')
-  
+
 #   @cat1 = Category.where(:name => "Jewellery").first
 #   #Jewellery
 #   SubCategory.create(:name => 'Silver Jewellery', :category_id => @cat1.id)
@@ -63,7 +89,7 @@ end
 
 #   SubCategory.create(:name => 'Birthday Jewellery', :category_id => @cat1.id)
 #   @subcat2 = SubCategory.where(:name => 'Birthday Jewellery').first
-  
+
 #   SubCategory.create(:name => 'Antique Jewellery', :category_id => @cat1.id)
 #   @subcat3=SubCategory.where(:name => 'Antique Jewellery').first
 
@@ -82,7 +108,7 @@ end
 
 #   SubCategory.create(:name => 'Filigree Jewellery', :category_id => @cat1.id)
 #   @subcat8=SubCategory.where(:name => 'Filigree Jewellery').first
-  
+
 #   SubCategory.create(:name => 'Gold Jewellery', :category_id => @cat1.id)
 #   @subcat9=SubCategory.where(:name => 'Gold Jewellery').first
 
@@ -109,10 +135,10 @@ end
 
 #   SubCategory.create(:name => 'Pachchikam Jewellery', :category_id => @cat1.id)
 #   @subcat17=SubCategory.where(:name => 'Pachchikam Jewellery').first
-  
+
 #   SubCategory.create(:name => 'Stone Jewellery', :category_id => @cat1.id)
 #   @subcat18=SubCategory.where(:name => 'Stone Jewellery').first
-  
+
 #   SubCategory.create(:name => 'Temple Jewellery', :category_id => @cat1.id)
 #   @subcat19=SubCategory.where(:name => 'Temple Jewellery').first
 
@@ -126,7 +152,7 @@ end
 
 #   SubCategory.create(:name => 'Women', :category_id => @cat2.id)
 #   @subcat22=SubCategory.where(:name => 'Women').first
-  
+
 #   SubCategory.create(:name => 'Kids', :category_id => @cat2.id)
 #   @subcat23=SubCategory.where(:name => 'Kids').first
 
@@ -140,7 +166,7 @@ end
 
 #   SubCategory.create(:name => 'HOME IMPROVEMENT', :category_id => @cat3.id)
 #   @subcat26=SubCategory.where(:name => 'HOME IMPROVEMENT').first
-  
+
 #   SubCategory.create(:name => 'KITCHEN & DINING', :category_id => @cat3.id)
 #   @subcat27=SubCategory.where(:name => 'KITCHEN & DINING').first
 
@@ -148,19 +174,19 @@ end
 #   #Men's Footwear
 #   SubCategory.create(:name => "MEN'S FOOTWEAR", :category_id => @cat4.id)
 #   @subcat28=SubCategory.where(:name => "MEN'S FOOTWEAR").first
-  
+
 #   SubCategory.create(:name => "WOMEN'S FOOTWEAR", :category_id => @cat4.id)
 #   @subcat29=SubCategory.where(:name => "WOMEN'S FOOTWEAR").first
-  
+
 
 #   @cat5 = Category.where(:name => "Accessories").first
 #   #Accessories
 #   SubCategory.create(:name => 'WOMEN', :category_id => @cat5.id)
 #   @subcat30=SubCategory.where(:name => 'WOMEN').first
-  
+
 #   SubCategory.create(:name => 'Men', :category_id => @cat5.id)
 #   @subcat31=SubCategory.where(:name => 'Men').first
-  
+
 #   SubCategory.create(:name => 'TRAVEL & LUGGAGE', :category_id => @cat5.id)
 #   @subcat32=SubCategory.where(:name => 'TRAVEL & LUGGAGE').first
 
@@ -172,19 +198,19 @@ end
 
 #   SubCategory.create(:name => 'Office Accessories', :category_id => @cat6.id)
 #   @subcat34=SubCategory.where(:name => 'Office Accessories').first
-  
+
 #   SubCategory.create(:name => 'Personalized Gifts', :category_id => @cat6.id)
 #   @subcat35=SubCategory.where(:name => 'Personalized Gifts').first
-  
+
 #   SubCategory.create(:name => 'Soft Toys', :category_id => @cat6.id)
 #   @subcat36=SubCategory.where(:name => 'Soft Toys').first
-  
+
 #   SubCategory.create(:name => 'Fashion Accessories', :category_id => @cat6.id)
 #   @subcat37=SubCategory.where(:name => 'Fashion Accessories').first
 
 #   SubCategory.create(:name => 'Day Special', :category_id => @cat6.id)
 #   @subcat38=SubCategory.where(:name => 'Day Special').first
-  
+
 #   #****************************************************************************
 #   #Child Category Section
 #   #Cloth Men
@@ -228,7 +254,7 @@ end
 #   SubSubCategory.create(:name => 'Jeans', :sub_category_id => @subcat23.id)
 #   SubSubCategory.create(:name => 'Clothing Sets', :sub_category_id => @subcat23.id)
 #   SubSubCategory.create(:name => 'Nightwear', :sub_category_id => @subcat23.id)
-  
+
 #   #Home Alliance, home decore
 #   SubSubCategory.create(:name => 'Clocks', :sub_category_id => @subcat24.id)
 #   SubSubCategory.create(:name => 'Handicrafts', :sub_category_id => @subcat24.id)
@@ -319,8 +345,8 @@ end
 #   SubSubCategory.create(:name => 'Passport & Card Holders', :sub_category_id => @subcat32.id)
 #   SubSubCategory.create(:name => 'Burdy', :sub_category_id => @subcat32.id)
 #   SubSubCategory.create(:name => 'Fashion', :sub_category_id => @subcat32.id)
-  
-  
+
+
 #   #Gift, Greeting Cards
 #   SubSubCategory.create(:name => 'Easter Cards', :sub_category_id => @subcat33.id)
 #   SubSubCategory.create(:name => 'Birthday', :sub_category_id => @subcat33.id)
@@ -357,7 +383,7 @@ end
 #   SubSubCategory.create(:name => 'Mugs', :sub_category_id => @subcat35.id)
 #   SubSubCategory.create(:name => 'Personalised Combos', :sub_category_id => @subcat35.id)
 #   SubSubCategory.create(:name => 'Photo Frames', :sub_category_id => @subcat35.id)
- 
+
 #   #Gift, Soft Toys
 #   SubSubCategory.create(:name => 'Teddy Bears', :sub_category_id => @subcat36.id)
 #   SubSubCategory.create(:name => 'Heart Cushions', :sub_category_id => @subcat36.id)
