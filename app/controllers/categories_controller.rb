@@ -6,11 +6,12 @@ class CategoriesController < ApplicationController
   end
   
   def new
-    @category = Category.new
+    @category = SubCategory.new
   end
 
   def create
-    @category = Category.new(params[:category])
+    @category = SubCategory.new(params[:sub_category])
+    @category.category_id = Category.first.id
     if @category.save
       flash[:success] = "Success"
       redirect_to categories_path
