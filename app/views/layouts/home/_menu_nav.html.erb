@@ -7,7 +7,7 @@
             <!--<span class="category-label-hot">Hot</span> --> 
             </a>
             <ul style="display: none;" class="level1">
-          <% Category.where("parent_id IS NOT NULL").each do |category| %>
+          <% SubCategory.where("name IS NOT NULL").each do |category| %>
               <li class="level1 first parent"><a href=<%= category_path(:categories => category.id) %>><span><%= category.name %></span></a>
             <% end %>
             </ul>
