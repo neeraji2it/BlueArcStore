@@ -8,7 +8,7 @@
             </a>
             <ul style="display: none;" class="level1">
           <% SubCategory.where("name IS NOT NULL").each do |category| %>
-              <li class="level1 first parent"><a href=<%= category_path(:categories => category.id) %>><span><%= category.name %></span></a>
+              <li class="level1 first parent"><a href=<%= category_path(:sub_cats => category.id) %>><span><%= category.name %></span></a>
             <% end %>
             </ul>
           </li>
