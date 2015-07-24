@@ -3,11 +3,11 @@
       <div class="nav-inner">    
         <!--End mobile-menu -->
         <ul id="nav" class="hidden-xs">
-          <li class="level0 parent drop-menu"><a href=<%= category_path %>><span>Categories</span> 
+          <li class="level0 parent drop-menu"><a href=<%= category_path %>><span>Electronics</span> 
             <!--<span class="category-label-hot">Hot</span> --> 
             </a>
             <ul style="display: none;" class="level1">
-          <% Category.where("parent_id IS NULL").each do |category| %>
+          <% Category.where("parent_id IS NOT NULL").each do |category| %>
               <li class="level1 first parent"><a href=<%= category_path(:categories => category.id) %>><span><%= category.name %></span></a>
             <% end %>
             </ul>
