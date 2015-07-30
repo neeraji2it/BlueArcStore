@@ -13,9 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.notify_bar
-//= require signature-pad
-//= require jquery.validate
-//= require jquery.validate.additional-methods
 //= require jquery.zoom
 //= require highcharts
 //= require Chart
