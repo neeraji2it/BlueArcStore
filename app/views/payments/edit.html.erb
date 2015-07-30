@@ -1,0 +1,12 @@
+<% @page_title = "Payment" %>
+<link href="/assets/font-awesome.min.css" rel="stylesheet">
+<div class="causesBox">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel-heading">
+    <h3>Edit Payment Information</h3>
+    </div>
+
+    <%= form_for @payment, :url => payment_path(:payment_id => @payment.id), :method => 'PUT', :html => {:id => 'cvvForm'} do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+<%end%>
+</div>

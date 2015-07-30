@@ -1,5 +1,7 @@
 ICS::Application.routes.draw do
  
+
+
   devise_for :users, :controllers => {:sessions => 'sessions'}
 
 
@@ -22,6 +24,8 @@ ICS::Application.routes.draw do
       put :reject_product
     end
   end
+
+  resources :blue_arc_orders
   
   resources :banner_images
   
@@ -143,16 +147,14 @@ ICS::Application.routes.draw do
 
   match 'orders/:id/refund' => 'orders#refund', :as => 'refund'
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :signatures, only: [:create, :new]
+  resources :payments do
+    member do
+      get :payment_pdf
+      get :next_step
+      get :thankyou
+    end
+  end
 
   # Sample resource route with options:
   #   resources :products do

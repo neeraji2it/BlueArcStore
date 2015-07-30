@@ -1,0 +1,15 @@
+<% @page_title = "Payment" %>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link href="/assets/font-awesome.min.css" rel="stylesheet">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<div class="causesBox">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel-heading">
+    <h3>Enter Payment Information</h3>
+    </div>
+
+    <%= form_for @payment, :url => payments_path, :method => 'POST', :html => {:id => 'cvvForm'} do |f| %>
+<%= render :partial => "form", :locals => {:f => f} %>
+<%end%>
+</div>

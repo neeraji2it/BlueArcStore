@@ -1,0 +1,2 @@
+module BlueArcOrdersHelper
+end

@@ -1,0 +1,53 @@
+<section id="leftColumn" class="col-xs-12 col-sm-9 col-md-9 col-lg-9" style="width: 60%;">
+    <span style="position: relative;font-weight: bold;color: black;">Fill in the Details</span>
+
+    <%= form_for @credit, :html => {:id => 'greatworkperks'} do |f| %>
+      <span style="color: red;font-weight: bold;"><%= @credit.message %></span>
+      <table style="line-height: 40px;">
+          <%= f.hidden_field :amount, :value => @amount %>
+          <tr>
+            <td>Amount to be Charged: <b><%= number_to_currency(@amount) %></b></td>
+          </tr>
+          <tr>
+              <td>First Name<br /><%= f.text_field :first_name, :class=>"form-control required", :placeholder => "First Name" %></td>
+              <td style="position: relative; float: left; left: 20px;">Last Name<br /><%= f.text_field :last_name, :class=>"form-control required", :placeholder => "Last Name" %></td>
+          </tr>
+          <tr>
+              <td>Address<br />
+                  <%= f.text_field :address, :placeholder => 'Address', :class=>"form-control required" %>
+              </td>
+              <td style="position: relative; float: left; left: 20px;">City<br />
+                  <%= f.text_field :city, :class=>"form-control required", :placeholder => "City" %>
+              </td>
+          </tr>
+          <tr>
+              <td>State<br /><%= f.text_field :state, :id => 'tags', :placeholder => 'State', :class=>"form-control required" %></td>
+              <td style="position: relative; float: left; left: 20px;">Country<br /><%= f.country_select :country %></td>
+          </tr>
+          <tr>
+              <td>Zip code<br /><%= f.text_field :postal_code, :class=>"form-control required", :placeholder => "Zip Code" %></td>
+              <td style="position: relative; float: left; left: 20px;">Phone<br />
+                  <%= f.text_field :phone, :placeholder => 'Phone', :class=>"form-control required" %>
+              </td>
+          </tr>
+          <tr>
+              <td><span style="position: relative;font-weight: bold;color: black;top: 9px;">Enter Your Card Details</span></td>
+          </tr>
+          <tr>
+              <td>Card Type<br /><%= f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]], {} %></td>
+              <td style="position: relative; float: left; left: 20px;">Card Number<br /><%= f.text_field :card_number, :placeholder => "Card Number", :class => "form-control required" %></td>
+          </tr>
+          <tr>
+              <td>Card Expiration Date<br /><%= f.date_select :card_expires_on, {:discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true, :order => [:month, :year]}, :style => 'width: 120px;' %></td>
+              <td style="position: relative; float: left; left: 20px;">Card Verification Value<br /><%= f.text_field :card_verification, :placeholder => "CVV Code", :class => "form-control required", :style => 'width: 120px;' %></td>
+          </tr>
+          <tr>
+              <td>
+                  <button type="submit" class="btn-enter" style="position: relative;top: 10px;">
+                      <span>Buy Credit <i class='fa fa-arrow-circle-right'></i></span>
+                  </button>
+              </td>
+          </tr>
+      </table>
+    <% end %>
+</section>
