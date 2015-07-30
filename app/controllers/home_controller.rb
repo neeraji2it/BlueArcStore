@@ -34,7 +34,9 @@ class HomeController < ApplicationController
     end
   end
 
-
+ def services
+  
+ end
   
   def sell
     

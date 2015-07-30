@@ -131,7 +131,7 @@ ICS::Application.routes.draw do
   get '/legal_disclaimer' => 'home#legal_disclaimer', :as => :legal_disclaimer
   get '/follow/:id' => "constants#follow", :as => :follow
   get '/favorite/:id' => "constants#favorite", :as => :favorite
-
+  get '/services' => "home#services", :as => :services
   root :to => 'home#index'
 
   # The priority is based upon order of creation:
