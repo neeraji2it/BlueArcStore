@@ -3,6 +3,7 @@
 
     <%= form_for @credit, :html => {:id => 'greatworkperks'} do |f| %>
       <span style="color: red;font-weight: bold;"><%= @credit.message %></span>
+      <%= render :partial => '/layouts/error_messages', :locals => {:resource => @credit} %>
       <table style="line-height: 40px;">
           <%= f.hidden_field :amount, :value => @amount %>
           <tr>

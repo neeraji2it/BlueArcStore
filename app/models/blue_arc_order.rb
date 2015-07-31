@@ -1,7 +1,6 @@
 class BlueArcOrder < ActiveRecord::Base
   include ActiveMerchant::Billing
   attr_accessible :amount, :first_name, :authorization, :params, :success, :message, :last_name, :address, :city, :state, :country, :postal_code, :phone, :card_type, :card_number, :card_expires_on, :card_verification
-  belongs_to :user
   serialize :params
   
   attr_accessor :card_number, :card_verification
@@ -42,7 +41,7 @@ class BlueArcOrder < ActiveRecord::Base
     {
       :card_code => self.card_verification,
       :order_id => self.id,
-      :description => "BLUEARC buy the credits",
+      :description => "BLUEARC contract",
       :billing_address => {
         :first_name    => first_name, 
         :last_name     => last_name, 
