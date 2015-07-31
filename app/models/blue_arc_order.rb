@@ -22,10 +22,10 @@ class BlueArcOrder < ActiveRecord::Base
   protected
   
   def process_payment
-    ActiveMerchant::Billing::Base.mode = AUTHORIZE_GATEWAY
+    ActiveMerchant::Billing::Base.mode = :production
     if credit_card.valid?
       options = purchase_options
-      gateway = AuthorizeNetGateway.new({:login => AUTHORIZE_LOGIN_ID, :password=> AUTHORIZE_TRANSACTION_KEY})
+      gateway = AuthorizeNetGateway.new({:login => '5Fq93Cd2m', :password=> '7wk8J6GJ4Est587z'})
       response = gateway.purchase(self.amount*100, credit_card, options)
       if response.success?
         self.update_attributes(:amount => self.amount, :success => response.success?, :authorization => response.authorization, :message => response.message, :params => response.params)
