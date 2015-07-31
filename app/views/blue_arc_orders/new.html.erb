@@ -22,6 +22,11 @@
               </td>
           </tr>
           <tr>
+              <td>Email:<br />
+                  <%= f.email_field :email, :placeholder => 'E-mail', :class=>"form-control required" %>
+              </td>
+          </tr>
+          <tr>
               <td>State<br /><%= f.text_field :state, :id => 'tags', :placeholder => 'State', :class=>"form-control required" %></td>
               <td style="position: relative; float: left; left: 20px;">Country<br /><%= f.country_select :country %></td>
           </tr>
