@@ -76,7 +76,23 @@ class ApplicationController < ActionController::Base
     cart
   end
 
+
+  def require_http_for_admin
+    authenticate_or_request_with_http_basic do |login, password|
+      login == "dine-media" && password=="dine!@#$%"
+    end
+  end
+
   private
+
+ def generated_token
+    loop do
+      token = SecureRandom.urlsafe_base64(32)
+      break token unless BluearcPayment.exists?(token: token)
+    end
+  end
+  helper_method :generated_token
+
 
   def is_valid_account?
     if current_user.role == 'buyer'

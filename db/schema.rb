@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150730123521) do
+ActiveRecord::Schema.define(:version => 20150731110701) do
 
   create_table "banner_images", :force => true do |t|
     t.string   "image_file_name"
@@ -58,6 +58,31 @@ ActiveRecord::Schema.define(:version => 20150730123521) do
     t.text     "params"
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+    t.string   "email"
+  end
+
+  create_table "bluearc_payments", :force => true do |t|
+    t.string   "product_name"
+    t.string   "customer_name"
+    t.text     "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "post_code"
+    t.string   "country"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "card_number"
+    t.decimal  "amount",        :precision => 8, :scale => 2
+    t.boolean  "is_signed",                                   :default => false
+    t.string   "token"
+    t.date     "date_of_birth"
+    t.string   "card_expiry"
+    t.string   "card_cvv"
+    t.string   "ip_address"
+    t.string   "slug"
+    t.integer  "user_id"
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
   end
 
   create_table "carts", :force => true do |t|
@@ -229,6 +254,13 @@ ActiveRecord::Schema.define(:version => 20150730123521) do
     t.string   "cause"
     t.string   "card_holder_name"
     t.string   "order_number"
+  end
+
+  create_table "payment_signatures", :force => true do |t|
+    t.integer  "bluearc_payment_id"
+    t.text     "signature"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "payments", :force => true do |t|

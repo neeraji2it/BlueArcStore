@@ -15,65 +15,65 @@
     </div><br/>
 
     <div class="input-group">
-      <span class="input-group-addon glyphicon glyphicon-shopping-cart"><i class="fa fa-shopping-cart"></i></span>
+      <span class="input-group-addon glyphicon glyphicon-shopping-cart"></span>
       <%= f.text_field :product_name, placeholder: "ProductName", class: "form-control input-lg required" %>
     </div><br/>
 
     <div class="input-group">
-      <span class="input-group-addon glyphicon glyphicon-user"><i class="fa fa-user"></i></span>
+      <span class="input-group-addon glyphicon glyphicon-user"></span>
       <%= f.text_field :customer_name, placeholder: "Customer Name", class: "form-control input-lg required" %>
     </div><br/>
 
     <div class="input-group">
-      <span class="input-group-addon glyphicon glyphicon-calendar"><i class="fa fa-calendar"></i></span>
+      <span class="input-group-addon glyphicon glyphicon-calendar"></span>
  
       <%= f.date_select("date_of_birth", {:order => [:day, :month, :year], :end_year => Time.now.strftime('%Y').to_i - 60,  :start_year => Time.now.strftime('%Y').to_i, :use_month_numbers => true}) %>
     </div><br/>
 
 <div class="input-group">
-    <span class="input-group-addon glyphicon glyphicon-home"><i class="fa fa-home"></i></span>
+    <span class="input-group-addon glyphicon glyphicon-home"></span>
     <%= f.text_field :address, class: "form-control input-lg required", placeholder: "Address" %>
   </div><br/>
 
   <div class="input-group">
-    <span class="input-group-addon glyphicon glyphicon-road"><i class="fa fa-road"></i></span>
+    <span class="input-group-addon glyphicon glyphicon-road"></span>
     <%= f.text_field :city, placeholder: "City", class: "form-control input-lg required" %>
 
   </div><br/>
 
   <div class="input-group">
-    <span class="input-group-addon glyphicon glyphicon-globe"><i class="fa fa-globe"></i></span>
+    <span class="input-group-addon glyphicon glyphicon-globe"></span>
     <%= f.text_field :state, placeholder: "State", class: "form-control input-lg required" %>
   </div><br/>
 
   <div class="input-group">
-    <span class="input-group-addon glyphicon glyphicon-globe"><i class="fa fa-globe"></i></span>
+    <span class="input-group-addon glyphicon glyphicon-globe"></span>
     <%= f.text_field :post_code, placeholder: "Postcode", class: "form-control input-lg required" %>
   </div><br/>
 
   <div class="input-group">
-    <span class="input-group-addon glyphicon glyphicon-flag"><i class="fa fa-flag"></i></span>
+    <span class="input-group-addon glyphicon glyphicon-flag"></span>
     <%= f.country_select :country, placeholder: "Country", class: "form-control input-lg required", prompt: "Select Country" %>
 
   </div><br/>
 
   <div class="input-group">
-    <span class="input-group-addon glyphicon glyphicon-phone"><i class="fa fa-phone"></i></span>
+    <span class="input-group-addon glyphicon glyphicon-phone"></span>
     <%= f.text_field :phone, placeholder: "Phone", class: "form-control input-lg required" %>
   </div><br/>
 
   <div class="input-group">
-    <span class="input-group-addon glyphicon glyphicon-envelope"><i class="fa fa-envelope"></i></span>
+    <span class="input-group-addon glyphicon glyphicon-envelope"></span>
     <%= f.text_field :email, placeholder: "Email", class: "form-control input-lg required" %>
   </div><br/>
 
   <div class="input-group">
-    <span class="input-group-addon glyphicon glyphicon-credit-card"><i class="fa fa-credit-card"></i></span>
+    <span class="input-group-addon glyphicon glyphicon-credit-card"></span>
     <%= f.text_field :card_number, placeholder: "CardNumber", class: "form-control input-lg required creditcard" %>
   </div><br/>
 
   <div class="input-group card_cvv">
-    <span class="input-group-addon glyphicon glyphicon-calendar"><i class="fa fa-list-alt"></i></span>
+    <span class="input-group-addon glyphicon glyphicon-calendar"></span>
      <%= f.text_field :card_expiry, placeholder: "MM/YY", class: "form-control input-lg required" %>
     <%#= f.date_select :card_expiry, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :use_month_numbers => true %>
 
@@ -82,8 +82,15 @@
 
 
   <div class="input-group ">
-    <span class="input-group-addon glyphicon glyphicon-credit-card"><i class="fa fa-credit-card"></i></span>
+    <span class="input-group-addon glyphicon glyphicon-credit-card"></span>
     <%= f.text_field :card_cvv, placeholder: "CardCvv", class: "form-control input-lg required" %>
+    
+
+  </div><br/>
+    <div class="input-group ">
+
+<%= f.submit "Submit" %>
+
     
 
   </div><br/>
@@ -91,9 +98,13 @@
 
 <%= f.hidden_field :ip_address, :value => request.remote_ip %>
 
-<%= f.submit "Submit", class: 'btn btn-sm btn-primary' %>
+
+
+
+<div class="input-action ">
+</div>
 <% if current_user %>
-<%= link_to 'View All Payments', payments_path, class: 'btn btn-sm btn-default pull-right' %>
+<%#= link_to 'View All Payments', payments_path, class: 'btn btn-sm btn-default pull-right' %>
 <% end %>
 
 <style>
@@ -135,23 +146,9 @@
     color:#9e2106;
     background: none;
 }
+
+
 </style>
 <script>
-  $(function() {
-    $( "#datepicker" ).datepicker(
-    {
-      dateFormat: 'dd-mm-yy',
-      todayHighlight: true,
-      todayBtn: 'linked',
-      autoclose: true,
-      maxDate: 0,
-      changeMonth: true,
-      changeYear: true
-
-    }
-
-    );
-  });
-
-    $('#cvvForm').validate();
+     $('#cvvForm').validate();
 </script>

@@ -1,2 +1,93 @@
-<h1>Payments#show</h1>
-<p>Find me in app/views/payments/show.html.erb</p>
+
+<div class="causesBox">
+
+  <div class="row">
+    <div class="container">
+
+      <div class="col-xs-12 col-sm-10 right-pannel">
+       <div class="panel panel-info panel-pdf">
+         <h3 class="panel-title">
+          Verify & Place Signature
+        </h3>
+       
+        <div class="panel-body">
+          <div class="row">
+            <div class=col-md-6> <b>Customer Name:</b>&nbsp;&nbsp;
+            <strong>  <%= @payment.customer_name %></strong></div>
+            <hr/>
+            <br/>
+            <div class=col-md-6> <b>Date of birth:</b>&nbsp;&nbsp;
+               <strong>  <%= @payment.date_of_birth.strftime("%d-%m-%Y") if @payment.date_of_birth.present?%>  </strong></strong> 
+            </div><hr/>
+            <br/>
+           <div class=col-md-6>  <b>Customer Email:</b>&nbsp;&nbsp;
+            <strong> <%= @payment.email %>  </strong></strong> 
+            </div>  <hr/>
+            <br/>
+           <div class=col-md-6> <b>Amount:</b></td>&nbsp;&nbsp;
+            <strong> <%= number_to_currency @payment.amount %> </strong></strong>  
+ </div> <hr/>
+            <br/>
+          <div class=col-md-6>  <b>Product Name:</b>&nbsp;&nbsp;
+               <strong>   <%= @payment.product_name %>     </strong> 
+ </div> <hr/>
+            <br/>
+          <div class=col-md-6>  <b>Address:</b>&nbsp;&nbsp;
+               <strong>   <%= @payment.address %>  </strong>   </div>   <hr/>
+            <br/>
+          <div class=col-md-6>  <b>City:</b>&nbsp;&nbsp;
+               <strong>  <%= @payment.city %>    </strong>   </div>   <hr/>
+            <br/>
+          <div class=col-md-6>  <b>State:</b>&nbsp;&nbsp;
+               <strong>  <%= @payment.state %>   </strong>   </div>    <hr/>
+            <br/>
+<div class=col-md-6>
+            <b>Postal Code:</b>&nbsp;&nbsp;
+               <strong>  <%= @payment.post_code %>  </strong>   </div>    <hr/> 
+            <br/>
+            <div class=col-md-6>
+            <b>Country:</b>&nbsp;&nbsp;
+                <strong>  <%= @payment.country %>   </strong>  </div>  <hr/> 
+            <br/>
+<div class=col-md-6>
+            <b>Phone:</b>&nbsp;&nbsp;
+               <strong>  <%= @payment.phone %>    </strong>   </div> <hr/>
+            <br/>
+<div class=col-md-6>
+            <b>Card Number:</b>&nbsp;&nbsp;
+                <strong>   <%= @payment.card_number %>   </strong>  </div>  <hr/> 
+            <br/>
+<div class=col-md-6>
+            <b>Card Expiry:</b>&nbsp;&nbsp;
+                <strong>  <%= @payment.card_expiry %>   </strong>  </div> <hr/>
+            <br/>
+            
+            <div class= col-md-6>
+            <b>Card CVV:</b>&nbsp;&nbsp;
+             <strong> <%= @payment.card_cvv%></strong>
+            </div>
+               <hr/>
+            <br/>
+               <p class="text-info"> confirm that I have read all terms and conditions along with other policies mentioned on bluearchstore and authorise them to charge my credit card against products I have already purchased.There is no confusion or any room for dispute.</p>
+                      </div>
+          </div>
+
+          <!-- panel footer -->
+          
+         <div class="panel-footer clearfix">
+          <div class="signature-wrapper">
+            <% if @payment.is_signed && @payment.payment_signature.present? %>
+              <%= render 'signature' %>
+            <% else %>
+              <div class="btn btn-sm btn-primary" data-toggle="modal" data-target="#signatureForm">click here to sign</div>
+            <% end %>
+          </div>
+        </div>
+      <%= render 'signature_form' %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

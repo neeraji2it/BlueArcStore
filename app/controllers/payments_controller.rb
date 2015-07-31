@@ -1,36 +1,36 @@
 class PaymentsController < ApplicationController
+  before_filter :payment, only: [:payment_pdf,:edit,:destroy,:update, :show,   :thankyou]
+before_filter :require_http_for_admin, only: [:index]
+  def new
+    @payment = BluearcPayment.new
+   # render :layout => false
+ end
 
-
- def new
-    @payment = Payment.new
-    render :layout => false
-  end
-
-  def create
-    @payment = Payment.new(params[:payment])
-    @payment.token = generated_token
-    if @payment.save
+ def create
+  @payment = BluearcPayment.new(params[:bluearc_payment])
+  @payment.token = generated_token
+  if @payment.save
       # send email with the link to sign the payment
       #PaymentMailer.payment_confirmation(@payment).deliver
       redirect_to payment_url(@payment, signature_token: @payment.token)
-      #redirect_to "/payments/index.php?amount=#{@payment.amount}"
+      #redirect_to "/payments/index.php?amount=#{@bluearc_payment.amount}"
     else
      render :new
    end
  end
 
  def index
-   @payments = params[:search] ? Payment.search(params[:search]) : Payment.all
+   @payments = params[:search] ? BluearcPayment.search(params[:search]) : BluearcPayment.all
+  # @payments = BluearcPayment.all
    render :layout => false
  end
-
 
 
  def edit
  end
 
  def update
-  if @payment.update_attributes(params[:payment])
+  if @payment.update_attributes(params[:bluearc_payment])
     redirect_to payment_url(@payment,signature_token: @payment.token)
   else
     render :edit
@@ -38,7 +38,17 @@ class PaymentsController < ApplicationController
 end
 
 def show
- @signature = Sign.new(payment_id: payment.id)
+ #@signature = PaymentSignature.new
+ @signature = PaymentSignature.new(bluearc_payment_id: payment.id)
+end
+
+def destroy
+@payment.destroy
+redirect_to :back
+end
+
+
+def thankyou
 end
 
 def payment_pdf
@@ -46,6 +56,11 @@ def payment_pdf
 end
 
 
+private
+
+def payment
+ @payment = BluearcPayment.find(params[:id])
+end
 
 
 end
