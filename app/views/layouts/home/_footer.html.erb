@@ -2,13 +2,17 @@
     <%= yield :email_alert %>
 
     <div class="footer-middle">
-      <div class="col-md-3 col-sm-4">
-        <div class="footer-logo"><a href="index.html" title="Logo"><img src="/assets/bluearc.png" alt="logo"></a></div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus diam arcu. </p>
+      <div class="col-md-3 col-sm-4 paymentimages">
+        <div class="footer-logo">
+        <%= image_tag  "logo2.png", :style => "width: 175px; height: 80px;" %> 
+-
+        </div>
+        <p>You are in Online Digital Market. </p>
         <div class="payment-accept">
           <div><img src="/assets/dashboards/images/payment-1.png" alt="payment"> <img src="/assets/dashboards/images/payment-2.png" alt="payment"> <img src="/assets/dashboards/images/payment-3.png" alt="payment"> <img src="/assets/dashboards/images/payment-4.png" alt="payment"></div>
         </div>
       </div>
+      
       <div class="col-md-2 col-sm-4">
         <h4>Information</h4>
         <ul class="links">
@@ -19,6 +23,8 @@
           <li><a href="/legal_disclaimer" title="Where is my order?">Legal disclaimer</a></li>
         </ul>
       </div>
+
+
       <div class="col-md-2 col-sm-4">
         <h4>Customer Services</h4>
         <ul class="links">
@@ -33,27 +39,43 @@
           <li class="first"><a href="/order_history" title="Site Map">Order History</a></li>
         </ul>
       </div>
-      <div class="col-md-3 col-sm-4">
-        <h4>Contact us</h4>
+
+      <div class="col-md-4 col-sm-4 contact">
+        <h4>Contact us</h4> 
         <div class="contacts-info">
-          <address>
-          <i class="add-icon">&nbsp;</i>123 Main Street, Anytown, <br>
-          &nbsp;CA 12345  USA
-          </address>
+         
           <div class="phone-footer"><i class="phone-icon">&nbsp;</i> +1 888 970 4294</div>
-          <div class="email-footer"><i class="email-icon"></i> <a href="#">support@magikcommerce.com</a> </div>
+       
+       <div class="email-footer">
+          <i class="email-icon" ></i> 
+          <a style="margin-right: 140px;",href="mailto:service.bluearchstore@gmail.com">service.bluearchstore@gmail.com</a> 
+      </div>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="col-sm-5 col-xs-12 coppyright">&copy; 2015 Magikcommerce. All Rights Reserved.</div>
+      <div class="col-sm-5 col-xs-12 coppyright">&copy; 2015 bluearchstore.com. All Rights Reserved.</div>
       <div class="col-sm-7 col-xs-12 company-links">
         <ul class="links">
-          <li><a href="#" title="Magento Themes">Magento Themes</a></li>
-          <li><a href="#" title="Premium Themes">Premium Themes</a></li>
-          <li><a href="#" title="Responsive Themes">Responsive Themes</a></li>
-          <li class="last"><a href="#" title="Magento Extensions">Magento Extensions</a></li>
+         
         </ul>
       </div>
     </div>
   </footer>
+
+  <style >
+.paymentimages
+{
+ width: 31%; 
+}
+
+.contact
+{
+width: 19%; 
+
+  }
+
+
+
+
+  </style>

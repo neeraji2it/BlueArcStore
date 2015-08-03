@@ -7548,7 +7548,7 @@ button.subscribe:before {
 	width: 50px;
 }
 .footer-middle h4 {
-	color: #fff;
+	color: #041c2f none repeat scroll 0 0;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 	font-weight: bold;
@@ -7565,7 +7565,7 @@ button.subscribe:before {
 	padding: 5px 0px;
 }
 .footer-middle .links li a {
-	color: #bed6e2;
+	color: #041c2f none repeat scroll 0 0;
 	transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
 }
 .footer-middle .links li a:hover {
@@ -7641,13 +7641,13 @@ button.subscribe:before {
 .email-footer a {
 	font-size: 12px;
 	line-height: 35px;
-	color: #bed6e2
+	color: #041c2f none repeat scroll 0 0
 }
 .phone-footer {
 	overflow: hidden;
 	font-size: 12px;
 	line-height: 35px;
-	color: #ccc;
+	color: #041c2f none repeat scroll 0 0;
 	margin-bottom: 10px;
 	margin-top: 12px;
 }
