@@ -20,7 +20,6 @@
 //= require social-share-button
 //= require navbar
 //= require waypoints.min
-//= require signature-pad
 //= require script
 //= require_tree .
 

@@ -1,10 +1,10 @@
 class BlueArcOrder < ActiveRecord::Base
   include ActiveMerchant::Billing
-  attr_accessible :amount, :first_name, :authorization, :params, :success, :message, :last_name, :address, :city, :state, :country, :postal_code, :phone, :card_type, :card_number, :card_expires_on, :card_verification
+  attr_accessible :amount, :first_name,:email, :authorization, :params, :success, :message, :last_name, :address, :city, :state, :country, :postal_code, :phone, :card_type, :card_number, :card_expires_on, :card_verification
   serialize :params
   
   attr_accessor :card_number, :card_verification
-  validates :address, :postal_code, :city, :state, :phone,:presence => true
+  validates :address,:email, :postal_code, :city, :state, :phone,:presence => true
   validate :validate_card
   validates_numericality_of :card_number
   

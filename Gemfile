@@ -49,13 +49,3 @@ gem 'test-unit'
 gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-rvm'
 gem 'capistrano-rails', '~> 1.1'
-
-
-#payment
-# gem 'jquery-validation-rails'
-# gem 'simple_form'
-gem 'country_select'
-gem 'pry-rails'
-gem 'wkhtmltopdf-binary'
-gem 'wicked_pdf'
-gem 'signature-pad-rails'
