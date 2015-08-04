@@ -7637,6 +7637,7 @@ button.subscribe:before {
 	overflow: hidden;
 	margin-top: 12px;
 	font-size: 12px;
+	width: 243px;
 }
 .email-footer a {
 	font-size: 12px;
