@@ -41,10 +41,8 @@ class CartsController < ApplicationController
 
 
   def empty_carts
-    if current_cart.line_items.present? 
-      current_cart.destroy
-      session[:cart] = nil
-    end
+    current_cart.destroy
+    session[:cart] = nil
     redirect_to carts_path
   end
 
