@@ -15,7 +15,9 @@ class Product < ActiveRecord::Base
   validates :title, :sell_name,:agree_terms, :description,:category_id, :presence => true
   validates :price, :numericality => {:greater_than_or_equal_to => 1}, :presence => true
   validates_numericality_of :qty, :greater_than_or_equal_to => 1
-  accepts_nested_attributes_for :images,:shipping_products, :colors, :allow_destroy => true, :reject_if => :all_blank
+  accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => :all_blank
+  accepts_nested_attributes_for :shipping_products,  :allow_destroy => true, :reject_if => :all_blank
+  accepts_nested_attributes_for :colors, :allow_destroy => true, :reject_if => :all_blank
 
   def to_param
     "#{id} #{title}".parameterize

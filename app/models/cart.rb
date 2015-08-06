@@ -4,7 +4,7 @@ class Cart < ActiveRecord::Base
 
   attr_accessible :purchased_at, :created_at, :product_id, :ip_address
 
-  has_one :order, :dependent => :destroy
+ # has_one :order, :dependent => :destroy
 
   def add_item(product_id, quantity)
     current_item = line_items.find_by_product_id(product_id)
