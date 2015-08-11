@@ -67,6 +67,8 @@ ICS::Application.routes.draw do
     end
     collection do
       delete :empty_carts
+      get :cart_details
+      post :cart_info
     end
 
   end
@@ -137,6 +139,7 @@ ICS::Application.routes.draw do
   get '/favorite/:id' => "constants#favorite", :as => :favorite
   get '/services' => "home#services", :as => :services
   root :to => 'home#index'
+  #post '/cart_info' => 'carts#cart_info', :as => :cart_info
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

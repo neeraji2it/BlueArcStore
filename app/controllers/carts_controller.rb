@@ -1,4 +1,23 @@
 class CartsController < ApplicationController
+
+  def cart_details
+    @cart_detail = CartDetail.new
+    #render :layout => false
+  end
+
+
+  def cart_info
+    @cart_detail = CartDetail.new(params[:cart_detail])
+    if @cart_detail.save
+       flash[:success] = "Your information was successfully submited! We will inform you directly  once product is in stack ."
+      redirect_to root_path
+    else
+      render :action  => :cart_details
+    end
+  end
+
+
+
   def index
     @cart = current_cart
     @user_products = current_cart.line_items
@@ -60,35 +79,35 @@ class CartsController < ApplicationController
     end
   end
   def return
-      @notification = Twocheckout::ValidateResponse.purchase({:sid => SID, :secret => SECRET, :order_number => params['order_number'], :total => params['total'], :key => params['key']})
+    @notification = Twocheckout::ValidateResponse.purchase({:sid => SID, :secret => SECRET, :order_number => params['order_number'], :total => params['total'], :key => params['key']})
 
-      @cart = Cart.find(params['merchant_order_id'])
-      p "******************************"
-      p @notification[:code]
-      p "*****************************"
-      begin
-        if @notification[:code] == "PASS"
-          @cart.status = 'success'
-          @cart.purchased_at = Time.now
-          @order = Order.create(
-            :net_payment => params['total'],
-            :card_holder_name => params['card_holder_name'],
-            :status => 'pending',
-            :order_number => params['order_number'],
-            :cart_id => params['merchant_order_id'],
-            :user_id => current_user.present? ? current_user.id : ''
-            )
-          session[:cart] = nil
-          flash[:notice] = "Your order was successful! We will contact you directly to confirm before delivery."
-          redirect_to root_url
-        else
-          @cart.status = "failed"
-          flash[:notice] = "Error validating order, please contact us for assistance."
-          redirect_to carts_url
-        end
-        ensure
-        @cart.save
+    @cart = Cart.find(params['merchant_order_id'])
+    p "******************************"
+    p @notification[:code]
+    p "*****************************"
+    begin
+      if @notification[:code] == "PASS"
+        @cart.status = 'success'
+        @cart.purchased_at = Time.now
+        @order = Order.create(
+          :net_payment => params['total'],
+          :card_holder_name => params['card_holder_name'],
+          :status => 'pending',
+          :order_number => params['order_number'],
+          :cart_id => params['merchant_order_id'],
+          :user_id => current_user.present? ? current_user.id : ''
+          )
+        session[:cart] = nil
+        flash[:notice] = "Your order was successful! We will contact you directly to confirm before delivery."
+        redirect_to root_url
+      else
+        @cart.status = "failed"
+        flash[:notice] = "Error validating order, please contact us for assistance."
+        redirect_to carts_url
       end
+    ensure
+      @cart.save
     end
+  end
 
 end
