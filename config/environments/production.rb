@@ -72,14 +72,14 @@ config.i18n.fallbacks = true
   #    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   #  end
 
-  config.action_mailer.default_url_options = {:host => 'handicraftstudios.com'}
+  config.action_mailer.default_url_options = {:host => 'bluearchstore.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
     #:domain               => 'baci.lindsaar.net',
-    :user_name            => 'oe.member1@gmail.com',
-    :password             => '0nlineeduc@ti0n',
+    :user_name            => 'service.bluearchstore@gmail.com',
+    :password             => 'Brother!@#$5',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
@@ -88,4 +88,4 @@ config.i18n.fallbacks = true
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
-SITE = 'handicraftstudios.com'
+SITE = 'bluearchstore.com'

@@ -1,11 +1,11 @@
 <% if @user.role == 'seller' %>
-  <%= link_to "indiancraftstudio.com/#{@user.username}", seller_url(@user.id) %>
+  <%= link_to "bluearchstore.com/#{@user.username}", seller_url(@user.id) %>
 <% else %>
-  <%= @invitation.email %>, would like you to try <%= link_to "indiancraftstudio.com", root_url %>, <br /><br />
+  <%= @invitation.email %>, would like you to try <%= link_to "bluearchstore.com", root_url %>, <br /><br />
 
   the cause commerce platform of the world.<br /><br />
 
   Regards,<br /><br />
 
-  the <%= link_to "indiancraftstudio.com", root_url %> team
+  the <%= link_to "bluearchstore.com", root_url %> team
 <% end %>

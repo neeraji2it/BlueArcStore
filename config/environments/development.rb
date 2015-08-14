@@ -28,8 +28,8 @@ ICS::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     #:domain               => 'baci.lindsaar.net',
-    :user_name            => 'indiancraftstudios@gmail.com',
-    :password             => 'indiancraftstudios@123',
+    :user_name            => 'service.bluearchstore@gmail.com',
+    :password             => 'Brother!@#$5',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
