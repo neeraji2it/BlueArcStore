@@ -75,12 +75,12 @@ config.i18n.fallbacks = true
   config.action_mailer.default_url_options = {:host => 'bluearchstore.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
+    :address              => "smtp.mandrillapp.com",
     :port                 => 587,
     #:domain               => 'baci.lindsaar.net',
     :user_name            => 'service.bluearchstore@gmail.com',
-    :password             => 'Brother!@#$5',
-    :authentication       => 'plain',
+    :password             => 'cx--40b0ROd6MknLxhhhuQ',
+    :authentication       => 'login',
     :enable_starttls_auto => true
   }
   
