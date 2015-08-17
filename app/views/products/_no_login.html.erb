@@ -6,10 +6,10 @@
             <div class="product-essential">
                 <input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">
                 <div class="product-img-box col-sm-5 wow bounceInRight animated">
-                  <div class="product-image">
+                  
                     <div class="large-image">
-                     <a href=<%= @product.images.first.image.url(:original) %> class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> 
-                     <%= image_tag(@product.images.first.image.url(:original)) %>
+                     <a href=<%= @product.images.first.image.url(:original) %> > 
+                     <%= image_tag(@product.images.first.image.url(:original)) %> 
                     </a> 
                     </div>
 

@@ -61,14 +61,6 @@ ActiveRecord::Schema.define(:version => 20150811112845) do
     t.string   "email"
   end
 
-  create_table "cart_deatails", :force => true do |t|
-    t.string   "name"
-    t.string   "phone_no"
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "cart_details", :force => true do |t|
     t.string   "name"
     t.string   "phone_no"

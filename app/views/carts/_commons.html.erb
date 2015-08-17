@@ -2,7 +2,8 @@
   <div class="product-image-area">
   <% if product.images.present? %>
    <a class="product-image" title="Sample Product" href=<%= product_path(product)%>> 
-    <%= image_tag(product.images.first.image.url(:original), :width => "#{height}", :height => "#{height}") %>
+  
+            <%= image_tag(product.images.first.image.url(:original), :width => "#{90}", :height => "#{90}") %>
    </a>
    <% end %>
   </div>
