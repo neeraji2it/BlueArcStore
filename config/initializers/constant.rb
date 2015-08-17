@@ -1,7 +1,7 @@
 if Rails.env=='development'
-  ADMIN_MAIL='oe.member1@gmail.com'
+  ADMIN_MAIL='service.bluearchstore@gmail.com'
 else
-  ADMIN_MAIL='admin@touchsecurecrafts.com'
+  ADMIN_MAIL='service.bluearchstore@gmail.com'
 end
 
 SID=102569662
