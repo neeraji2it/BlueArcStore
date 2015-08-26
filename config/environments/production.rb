@@ -61,16 +61,22 @@ config.i18n.fallbacks = true
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  #  config.after_initialize do
-  #    ActiveMerchant::Billing::Base.mode = :test
-  #    paypal_options = {
-  #      :login => "k.ashok502-facilitator_api1.gmail.com",
-  #      :password => "1366968794",
-  #      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AwVzeB7ThvogKHzICFAE2dVcZPjR"
-  #    }
-  #    ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
-  #    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
-  #  end
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :production
+    authorize = {
+      :login => '5Fq93Cd2m',
+      :password=> '7wk8J6GJ4Est587z'
+    }
+    payeezy = {
+      :apikey => "jEKMBqpW6J2CNiUyyLTEPDPmZtLkOkhH",
+      :merchant_id => "bd76ac4ef2af5418",
+      :url => "https://api-cert.payeezy.com/v1/transactions",
+      :apisecret => "afcbd1ed219b2fd6031198077bb0226a2c8caf9baf90ab636b32ecfca0b1f9b2",
+      :token  => "fdoa-a480ce8951daa73262734cf102641994c1e55e7cdf4c02b6"
+    }
+    ::AUTHORIZE_GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(authorize)
+    ::PAYEEZY = Payeezy::Transactions.new(payeezy)
+  end
 
   config.action_mailer.default_url_options = {:host => 'bluearchstore.com'}
   config.action_mailer.delivery_method = :smtp
@@ -83,7 +89,7 @@ config.i18n.fallbacks = true
     :authentication       => 'login',
     :enable_starttls_auto => true
   }
-  
+
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5

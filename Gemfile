@@ -13,6 +13,7 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'fb_graph'
 gem 'activemerchant'
+gem 'payeezy'
 gem 'aws-sdk'
 gem "omniauth-google-oauth2"
 gem 'omniauth-yahoo'

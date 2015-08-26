@@ -6,6 +6,7 @@
       <%= render :partial => '/layouts/error_messages', :locals => {:resource => @credit} %>
       <table style="line-height: 40px;">
           <%= f.hidden_field :amount, :value => @amount %>
+          <%= f.hidden_field :payment_type, :value => @type %>
           <tr>
             <td>Amount to be Charged: <b><%= number_to_currency(@amount) %></b></td>
           </tr>

@@ -1,4 +1,4 @@
-<div class="page">   
+<div class="page">
   <!-- Breadcrumbs -->
   <!-- main-container -->
   <div class="main-container col2-right-layout">
@@ -10,20 +10,33 @@
           </div>
 
           <div class="static-contain">
-          <%= form_tag new_blue_arc_order_path, :method => :get do %>
+          <%= form_tag new_blue_arc_order_path, :id => "service_form", :method => :get do %>
           <%= select_tag :price,options_for_select([["$50- 15 days support- for 1 computer","50"],["$80- 6 months support for 3 computers","80"],["$100- 1 year support- for 1 computer","100"],["$120- 1 year support for 3 computers","120"],["$150- 3 years support for 1 computer", "150"],["$170- 3 years support for 3 computers","170"],["$200- 5 years support for 1 computer","200"],["$220- 5 years support for 3 computers","220"],["$250- 8 years support for 1 computer ","250"],["$270- 8 years support for 3 computers","270"],["$300- 15 years support for 1 computer","300"],["$350- 15 years support for 3 computers","350"]]) %>
+          <br /><br />
+
           <p>Services offered : Remove junk file, speedup computer, unwanted file, manage the free space in computer, error checking, disk cleanup, certificate updation, startup problem, browser problem, antivirus, email problem, external pripheral (eg.:-pandrive,printer,router ,moderm, switch etc.)</p>
-          
+
           <%= submit_tag "Buy", class: 'mini-cart', style: 'position: relative; height: 39px; text-align: center; width: 140px; color: white;' %>
+          <%= submit_tag "Payeezy", class: 'mini-cart', style: 'position: relative; height: 39px; text-align: center; width: 140px; color: white;' %>
+
           <%= link_to "Contract Form", "http://63.142.251.176/payments/new",:target =>'_blank', class: 'mini-cart', style: 'position: relative; height: 39px; text-align: center; width: 140px; color: white;float: right;padding: 10px;' %>
-            
+
                   </div>
                   <% end %>
                 </section>
-                
+
               </div>
             </div>
           </div>
-          <!--End main-container --> 
+          <!--End main-container -->
 
         </div>
+        // <script>
+        //   $("#service_form").submit(function() {
+        //     var textVal = $("#blue_arc_code").val();
+        //     if(textVal != "BLUEARCH!@#$") {
+        //       alert('Fill the correct BlueArch Code');
+        //       return false;
+        //     }
+        //   });
+        // </script>
