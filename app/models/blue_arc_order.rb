@@ -33,7 +33,7 @@ class BlueArcOrder < ActiveRecord::Base
 
   def process_purchase
     if self.payment_type == 'payeezy'
-      PAYEEZY.transact(:authorize, primary_tx_payload)
+      PAYEEZY.transact(:purchase, primary_tx_payload)
     else
       AUTHORIZE_GATEWAY.purchase(self.amount*100, credit_card, purchase_options)
     end
