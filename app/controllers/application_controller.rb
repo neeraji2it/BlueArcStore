@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper :all
   helper_method :current_cart
   layout :layout
+  before_filter :redirect_subdomain
 
 
   def after_sign_in_path_for(resource_or_scope)
@@ -30,6 +31,12 @@ class ApplicationController < ActionController::Base
     # or turn layout off for every devise controller:
   end
 
+  def redirect_subdomain
+    if request.host == 'bluearchstore.com' or request.host == 'www.bluearchstore.com'
+      redirect_to 'https://bluearchstore.com' + request.fullpath
+    end
+  end
+
   def is_signin?
     unless current_user
       flash[:error] = "Please Login"
@@ -45,25 +52,25 @@ class ApplicationController < ActionController::Base
       redirect_to '/'
     end
   end
-  
+
   def admin?
     redirect_to admin_dashboard_path if (current_user && (current_user.role == 'admin') && params[:controller] == 'home' && params[:action] == 'index')
   end
-  
+
   def is_seller?
     unless current_user.role == 'seller'
       flash[:error] = "You have no permission to access that page"
       redirect_to profile_profile_path(current_user)
     end
   end
-  
+
   def is_buyer?
     unless current_user.role == 'buyer'
       flash[:error] = "You have no permission to access that page"
       redirect_to profile_profile_path(current_user)
     end
   end
-  
+
   def current_cart(create_if_not_exist=false)
     cart = Cart.find(session[:cart]) if session[:cart]
     unless cart
