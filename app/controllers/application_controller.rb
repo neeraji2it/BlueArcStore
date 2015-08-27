@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper :all
   helper_method :current_cart
   layout :layout
-  before_filter :redirect_subdomain
+  #before_filter :redirect_subdomain
 
 
   def after_sign_in_path_for(resource_or_scope)
@@ -29,12 +29,6 @@ class ApplicationController < ActionController::Base
       "login"
     end
     # or turn layout off for every devise controller:
-  end
-
-  def redirect_subdomain
-    if request.host == 'bluearchstore.com' or request.host == 'www.bluearchstore.com'
-      redirect_to 'https://bluearchstore.com' + request.fullpath
-    end
   end
 
   def is_signin?
