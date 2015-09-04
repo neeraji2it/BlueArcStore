@@ -22,18 +22,14 @@ class BlueArcOrder < ActiveRecord::Base
 
   def process_payment
     response = process_purchase
-    if self.payment_type == 'payeezy'
-      self.update_attributes(:amount => self.amount, :success => response['validation_status'] == 'success' ? true : false, :authorization => response['transaction_id'], :message => response['transaction_status'], :params => response)
-    else
-      self.update_attributes(:amount => self.amount, :success => response.success?, :authorization => response.authorization, :message => response.message, :params => response.params)
-    end
+    self.update_attributes(:amount => self.amount, :success => response.success?, :authorization => response.authorization, :message => response.message, :params => response.params)
   end
 
   private
 
   def process_purchase
-    if self.payment_type == 'payeezy'
-      PAYEEZY.transact(:purchase, primary_tx_payload)
+    if self.payment_type == 'first_data'
+      FIRSTDATA.purchase(self.amount*100, credit_card, purchase_options)
     else
       AUTHORIZE_GATEWAY.purchase(self.amount*100, credit_card, purchase_options)
     end
@@ -75,22 +71,5 @@ class BlueArcOrder < ActiveRecord::Base
       :first_name => first_name,
       :last_name => last_name
     )
-  end
-
-  def primary_tx_payload
-    credit_card = {}
-    payload = {}
-    payload[:merchant_ref] = 'BLUEARCH PAYMENTS LLC'
-    payload[:amount]= self.amount
-    payload[:currency_code]= 'USD'
-    payload[:method]= 'credit_card'
-
-    credit_card[:type] = card_type
-    credit_card[:cardholder_name] = first_name + ' ' + last_name
-    credit_card[:card_number] = card_number
-    credit_card[:exp_date] = '1020'
-    credit_card[:cvv] = card_verification
-    payload[:credit_card] = credit_card
-    payload
   end
 end

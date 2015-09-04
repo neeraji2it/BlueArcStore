@@ -40,15 +40,12 @@ ICS::Application.configure do
       :login => '9Z7PR6t7juz',
       :password=> '72W5yEA58fa5r5FQ'
     }
-    payeezy = {
-      :apikey => "jEKMBqpW6J2CNiUyyLTEPDPmZtLkOkhH",
-      :merchant_id => "bd76ac4ef2af5418",
-      :url => "https://api-cert.payeezy.com/v1/transactions",
-      :apisecret => "afcbd1ed219b2fd6031198077bb0226a2c8caf9baf90ab636b32ecfca0b1f9b2",
-      :token  => "fdoa-a480ce8951daa73262734cf102641994c1e55e7cdf4c02b6"
+    first_data = {
+      :login => 'AJ8888-05',
+      :password => 'vjfuo37yfmul845f3mupj428k5rc05rw'
     }
     ::AUTHORIZE_GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(authorize)
-    ::PAYEEZY = Payeezy::Transactions.new(payeezy)
+    ::FIRSTDATA = ActiveMerchant::Billing::FirstdataE4Gateway.new(first_data)
   end
 
   # Raise exception on mass assignment protection for Active Record models

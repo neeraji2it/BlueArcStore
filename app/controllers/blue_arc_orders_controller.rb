@@ -1,6 +1,6 @@
 class BlueArcOrdersController < ApplicationController
   def new
-    @type = params[:commit] == "Payeezy" ? 'payeezy' : 'authorize'
+    @type = params[:commit] == "Payeezy" ? 'first_data' : 'authorize'
     @credit = BlueArcOrder.new
     @amount = params[:price]
   end

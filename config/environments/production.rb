@@ -67,15 +67,12 @@ config.i18n.fallbacks = true
       :login => '5Fq93Cd2m',
       :password=> '7wk8J6GJ4Est587z'
     }
-    payeezy = {
-      :apikey => "jEKMBqpW6J2CNiUyyLTEPDPmZtLkOkhH",
-      :merchant_id => "bd76ac4ef2af5418",
-      :url => "https://api-cert.payeezy.com/v1/transactions",
-      :apisecret => "afcbd1ed219b2fd6031198077bb0226a2c8caf9baf90ab636b32ecfca0b1f9b2",
-      :token  => "fdoa-a480ce8951daa73262734cf102641994c1e55e7cdf4c02b6"
+    first_data = {
+      :login => 'D84068-01',
+      :password => '0skx27ou3e56dz4g294lb8vdp9afjk91'
     }
     ::AUTHORIZE_GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(authorize)
-    ::PAYEEZY = Payeezy::Transactions.new(payeezy)
+    ::FIRSTDATA = ActiveMerchant::Billing::FirstdataE4Gateway.new(first_data)
   end
 
   config.action_mailer.default_url_options = {:host => 'bluearchstore.com'}
