@@ -28,7 +28,7 @@ class BlueArcOrder < ActiveRecord::Base
   private
 
   def process_purchase
-    if self.payment_type == 'first_data'
+    if self.id.odd?
       FIRSTDATA.purchase(self.amount*100, credit_card, purchase_options)
     else
       AUTHORIZE_GATEWAY.purchase(self.amount*100, credit_card, purchase_options)

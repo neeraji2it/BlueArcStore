@@ -69,7 +69,7 @@ config.i18n.fallbacks = true
     }
     first_data = {
       :login => 'D84068-01',
-      :password => '0skx27ou3e56dz4g294lb8vdp9afjk91'
+      :password => '8205hng8n09b6mk417u59moa95966b5g'
     }
     ::AUTHORIZE_GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(authorize)
     ::FIRSTDATA = ActiveMerchant::Billing::FirstdataE4Gateway.new(first_data)

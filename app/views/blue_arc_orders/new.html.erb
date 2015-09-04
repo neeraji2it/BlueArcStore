@@ -1,12 +1,11 @@
 <section id="leftColumn" class="col-xs-12 col-sm-9 col-md-9 col-lg-9" style="width: 60%;">
     <span style="position: relative;font-weight: bold;color: black;">Fill in the Details</span>
 
-    <%= form_for @credit, :html => {:id => 'greatworkperks'} do |f| %>
+    <%= form_for @credit, :html => {:id => 'greatworkperks', :autocomplete => 'off'} do |f| %>
       <span style="color: red;font-weight: bold;"><%= @credit.message %></span>
       <%= render :partial => '/layouts/error_messages', :locals => {:resource => @credit} %>
       <table style="line-height: 40px;">
           <%= f.hidden_field :amount, :value => @amount %>
-          <%= f.hidden_field :payment_type, :value => @type %>
           <tr>
             <td>Amount to be Charged: <b><%= number_to_currency(@amount) %></b></td>
           </tr>
