@@ -49,12 +49,11 @@
           </tr>
           <tr>
               <td>
-                  <button type="submit" class="btn-enter" style="position: relative;top: 10px;">
-                      <span>Buy<i class='fa fa-arrow-circle-right'></i></span>
-                  </button>
+                  <%= f.submit "Buy", class: 'mini-cart', style: 'position: relative; height: 39px; text-align: center; width: 140px; color: white;top: 15px;' %>
               </td>
           </tr>
       </table>
+      <hr />
     <% end %>
 </section>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places,geometry" type="text/javascript"></script>
