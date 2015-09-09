@@ -72,7 +72,7 @@ config.i18n.fallbacks = true
       :password => '8205hng8n09b6mk417u59moa95966b5g'
     }
     stripe = {
-      :login => 'sk_live_aryFpCesyzGR92IC9ri15QNG'
+      :login => 'sk_live_aryFpCesyzGR92IC9ri1SQNG'
     }
     ::AUTHORIZE_GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(authorize)
     ::FIRSTDATA = ActiveMerchant::Billing::FirstdataE4Gateway.new(first_data)
