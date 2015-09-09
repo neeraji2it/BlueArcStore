@@ -71,8 +71,12 @@ config.i18n.fallbacks = true
       :login => 'D84068-01',
       :password => '8205hng8n09b6mk417u59moa95966b5g'
     }
+    stripe = {
+      :login => 'sk_live_aryFpCesyzGR92IC9ri15QNG'
+    }
     ::AUTHORIZE_GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(authorize)
     ::FIRSTDATA = ActiveMerchant::Billing::FirstdataE4Gateway.new(first_data)
+    ::STRIPE = ActiveMerchant::Billing::StripeGateway.new(stripe)
   end
 
   config.action_mailer.default_url_options = {:host => 'bluearchstore.com'}

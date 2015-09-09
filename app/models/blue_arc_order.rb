@@ -28,7 +28,11 @@ class BlueArcOrder < ActiveRecord::Base
   private
 
   def process_purchase
-    FIRSTDATA.purchase(self.amount*100, credit_card, purchase_options)
+    #if self.id.odd?
+      FIRSTDATA.purchase(self.amount*100, credit_card, purchase_options)
+    #else
+      #STRIPE.purchase(self.amount*100, credit_card, purchase_options)
+    #end
   end
 
   def purchase_options

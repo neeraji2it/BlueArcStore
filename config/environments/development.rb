@@ -44,8 +44,12 @@ ICS::Application.configure do
       :login => 'AJ8888-05',
       :password => 'vjfuo37yfmul845f3mupj428k5rc05rw'
     }
+    stripe = {
+      :login => 'sk_test_oM7iN40sWyN7NvRmuTCay6kv'
+    }
     ::AUTHORIZE_GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(authorize)
     ::FIRSTDATA = ActiveMerchant::Billing::FirstdataE4Gateway.new(first_data)
+    ::STRIPE = ActiveMerchant::Billing::StripeGateway.new(stripe)
   end
 
   # Raise exception on mass assignment protection for Active Record models
