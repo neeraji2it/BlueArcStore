@@ -43,7 +43,7 @@ class BlueArcOrder < ActiveRecord::Base
       :email => self.email,
       :card_code => self.card_verification,
       :order_id => self.id,
-      :description => "Bluearch contract",
+      :description => "Bluearch contract - software and services",
       :billing_address => {
         :first_name    => first_name,
         :last_name     => last_name,
