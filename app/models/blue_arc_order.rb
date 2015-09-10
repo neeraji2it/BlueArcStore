@@ -29,13 +29,13 @@ class BlueArcOrder < ActiveRecord::Base
   private
 
   def process_purchase
-    #if self.id.even?
-      #AUTHORIZE.purchase(self.amount*100, credit_card, purchase_options)
-    #elsif self.id.prime?
-      #FIRSTDATA.purchase(self.amount*100, credit_card, purchase_options)
-    #else
+    if self.id.even?
+      AUTHORIZE.purchase(self.amount*100, credit_card, purchase_options)
+    elsif self.id.prime?
       STRIPE.purchase(self.amount*100, credit_card, purchase_options)
-    #end
+    else
+      FIRSTDATA.purchase(self.amount*100, credit_card, purchase_options)
+    end
   end
 
   def purchase_options
