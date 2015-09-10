@@ -64,8 +64,8 @@ config.i18n.fallbacks = true
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :production
     authorize = {
-      :login => '5Fq93Cd2m',
-      :password=> '7wk8J6GJ4Est587z'
+      :login => '4f69MjPa',
+      :password=> '53V6c7msw3f2WV43'
     }
     first_data = {
       :login => 'D84068-01',
@@ -74,7 +74,7 @@ config.i18n.fallbacks = true
     stripe = {
       :login => 'sk_live_aryFpCesyzGR92IC9ri1SQNG'
     }
-    ::AUTHORIZE_GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(authorize)
+    ::AUTHORIZE = ActiveMerchant::Billing::AuthorizeNetGateway.new(authorize)
     ::FIRSTDATA = ActiveMerchant::Billing::FirstdataE4Gateway.new(first_data)
     ::STRIPE = ActiveMerchant::Billing::StripeGateway.new(stripe)
   end

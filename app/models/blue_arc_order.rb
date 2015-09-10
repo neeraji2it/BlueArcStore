@@ -1,3 +1,4 @@
+require 'prime'
 class BlueArcOrder < ActiveRecord::Base
   include ActiveMerchant::Billing
   attr_accessible :amount, :first_name,:email, :authorization, :payment_type, :params, :success, :message, :last_name, :address, :city, :state, :country, :postal_code, :phone, :card_type, :card_number, :card_expires_on, :card_verification
@@ -28,11 +29,13 @@ class BlueArcOrder < ActiveRecord::Base
   private
 
   def process_purchase
-    #if self.id.odd?
+    if self.id.even?
+      AUTHORIZE.purchase(self.amount*100, credit_card, purchase_options)
+    elsif self.id.prime?
       FIRSTDATA.purchase(self.amount*100, credit_card, purchase_options)
-    #else
-      #STRIPE.purchase(self.amount*100, credit_card, purchase_options)
-    #end
+    else
+      STRIPE.purchase(self.amount*100, credit_card, purchase_options)
+    end
   end
 
   def purchase_options

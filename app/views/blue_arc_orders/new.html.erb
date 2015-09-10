@@ -10,7 +10,7 @@
             <td>Amount to be Charged: <b><%= number_to_currency(@amount) %></b></td>
           </tr>
           <tr>
-              <td>First Name<br /><%= f.text_field :first_name, :class=>"form-control required", :placeholder => "First Name" %></td>
+              <td>First Name<br /><%= f.text_field :first_name, :autofocus => true, :class=>"form-control required", :placeholder => "First Name" %></td>
               <td style="position: relative; float: left; left: 20px;">Last Name<br /><%= f.text_field :last_name, :class=>"form-control required", :placeholder => "Last Name" %></td>
           </tr>
           <tr>

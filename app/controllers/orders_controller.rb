@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
       end
     end
   end
-  
+
   def shipping
     @line_item = LineItem.find(params[:line_item_id])
     @order = @line_item.orders.find(params[:id])
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
 
 
   def notification
-    @notification = Twocheckout::ValidateResponse.notification({:sale_id => params['sale_id'], :vendor_id => SID, 
+    @notification = Twocheckout::ValidateResponse.notification({:sale_id => params['sale_id'], :vendor_id => SID,
       :invoice_id => params['invoice_id'], :secret => SECRET, :md5_hash => params['md5_hash']})
     @order = Order.find_by_order_number(params['sale_id'])
     if params['message_type'] == "FRAUD_STATUS_CHANGED"

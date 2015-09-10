@@ -47,7 +47,7 @@ ICS::Application.configure do
     stripe = {
       :login => 'sk_test_oM7iN40sWyN7NvRmuTCay6kv'
     }
-    ::AUTHORIZE_GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(authorize)
+    ::AUTHORIZE = ActiveMerchant::Billing::AuthorizeNetGateway.new(authorize)
     ::FIRSTDATA = ActiveMerchant::Billing::FirstdataE4Gateway.new(first_data)
     ::STRIPE = ActiveMerchant::Billing::StripeGateway.new(stripe)
   end
