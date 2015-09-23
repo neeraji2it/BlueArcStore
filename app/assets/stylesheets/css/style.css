@@ -9,7 +9,7 @@
 */
 
 /* body */
- 
+
 body {
 	font-size: 12px;
 	background: url("/assets/dashboards/images/background-img.png") repeat fixed 0 0 rgba(0, 0, 0, 0);
@@ -2489,7 +2489,7 @@ small {
 	float: left;
 }
 #mobile-menu .toggle {
-	float: left;	
+	float: left;
 	width: 30px;
 	height: 35px;
 	cursor: pointer;
@@ -7233,7 +7233,7 @@ button.button.btn-proceed-checkout span {
 /* End Content  */
 
 
-/* Footer */	
+/* Footer */
 .footer {
 	background: none repeat scroll 0 0 #0a3151;
 }
@@ -7569,7 +7569,6 @@ button.subscribe:before {
 	transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
 }
 .footer-middle .links li a:hover {
-	color: #fff;
 	text-decoration: none;
 }
 .footer-middle .links li a:before {

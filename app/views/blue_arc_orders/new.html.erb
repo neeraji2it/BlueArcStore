@@ -48,10 +48,11 @@
               <td style="position: relative; float: left; left: 20px;">Card Verification Value<br /><%= f.text_field :card_verification, :placeholder => "CVV Code", :class => "form-control required", :style => 'width: 120px;' %></td>
           </tr>
           <tr>
+            <td><%= link_to "<u>CLICK HERE</u>".html_safe, terms_conditions_path, :target => '_blank' %> to Accept the Terms and Conditions</td>
+          </tr>
+          <tr>
               <td>
                   <%= f.submit "Buy", class: 'mini-cart', style: 'position: relative; height: 39px; text-align: center; width: 140px; color: white;top: 15px;' %>
-<td><%= link_to "Buyers Terms & conditions", terms_conditions_path, :class => "btn btn-info", style: 'position: relative; height: 39px; text-align: center; width: 190px; color: white;top: 15px;' %>
-</td>
               </td>
 
           </tr>
