@@ -61,34 +61,12 @@ ActiveRecord::Schema.define(:version => 20150811112845) do
     t.string   "email"
   end
 
-  create_table "blue_payments", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "product_name"
-    t.string   "customer_name"
-    t.text     "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "post_code"
-    t.string   "country"
-    t.string   "phone"
+  create_table "cart_deatails", :force => true do |t|
+    t.string   "name"
+    t.string   "phone_no"
     t.string   "email"
-    t.string   "card_number"
-    t.decimal  "amount",        :precision => 8, :scale => 2
-    t.boolean  "is_signed",                                   :default => false
-    t.string   "token"
-    t.string   "slug"
-    t.string   "card_expiry"
-    t.string   "card_cvv"
-    t.date     "date_of_birth"
-    t.datetime "created_at",                                                     :null => false
-    t.datetime "updated_at",                                                     :null => false
-  end
-
-  create_table "blue_signs", :force => true do |t|
-    t.integer  "blue_payment_id"
-    t.text     "signature"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "cart_details", :force => true do |t|
