@@ -65,7 +65,7 @@ config.i18n.fallbacks = true
     ActiveMerchant::Billing::Base.mode = :production
     authorize = {
       :login => '4f69MjPa',
-      :password=> '53V6c7msw3f2WV43'
+      :password=> '3MuQAs6HzM999w2a'
     }
     first_data = {
       :login => 'D84068-01',
