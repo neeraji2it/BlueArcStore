@@ -1,7 +1,7 @@
 <section id="leftColumn" class="col-xs-12 col-sm-9 col-md-9 col-lg-9" style="width: 60%;">
     <span style="position: relative;font-weight: bold;color: black;">Fill in the Details</span>
 
-    <%= form_for @credit, :html => {:id => 'greatworkperks', :autocomplete => 'off'} do |f| %>
+    <%= form_for @credit, :html => {:id => 'payment_form', :autocomplete => 'off'} do |f| %>
       <span style="color: red;font-weight: bold;"><%= @credit.message %></span>
       <%= render :partial => '/layouts/error_messages', :locals => {:resource => @credit} %>
       <table style="line-height: 40px;">
@@ -9,6 +9,7 @@
           <tr>
             <td>Amount to be Charged: <b><%= number_to_currency(@amount) %></b></td>
           </tr>
+          
           <tr>
               <td>First Name<br /><%= f.text_field :first_name, :autofocus => true, :class=>"form-control required", :placeholder => "First Name" %></td>
               <td style="position: relative; float: left; left: 20px;">Last Name<br /><%= f.text_field :last_name, :class=>"form-control required", :placeholder => "Last Name" %></td>
@@ -48,8 +49,12 @@
               <td style="position: relative; float: left; left: 20px;">Card Verification Value<br /><%= f.text_field :card_verification, :placeholder => "CVV Code", :class => "form-control required", :style => 'width: 120px;' %></td>
           </tr>
           <tr>
+          <td style="position: relative; float: left;">BlueArch Code<br /><%= text_field_tag :blue_arc_code, '', :class => "form-control required", :value => params[:blue_arc_code], :placeholder => "BlueArch Code" %></td>
+          </tr>
+          <tr>
             <td><%= link_to "<u>CLICK HERE</u>".html_safe, terms_conditions_path, :target => '_blank' %> to Accept the Terms and Conditions</td>
           </tr>
+          
           <tr>
               <td>
                   <%= f.submit "Buy", class: 'mini-cart', style: 'position: relative; height: 39px; text-align: center; width: 140px; color: white;top: 15px;' %>
@@ -68,4 +73,13 @@
       var autocomplete = new google.maps.places.Autocomplete(input);
   }
   google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<script>
+          $("#payment_form").submit(function() {
+             var textVal = $("#blue_arc_code").val();
+           if(textVal != "bluearchstore123") {
+               alert('Enter the correct BlueArch Code');
+              return false;
+            }
+          });
 </script>
